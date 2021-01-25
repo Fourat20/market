@@ -27,6 +27,22 @@ const routes: Routes = [
     path: 'categorie',
     loadChildren: () => import('./pages/categorie/categorie.module').then( m => m.CategoriePageModule)
   },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'game',
+    loadChildren: () => import('./pages/game/game.module').then( m => m.GamePageModule)
+  },
+  {
+    path: 'seller',
+    loadChildren: () => import('./pages/seller/seller.module').then( m => m.SellerPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
 ];
 
 @NgModule({

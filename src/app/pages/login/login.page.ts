@@ -18,6 +18,6 @@ export class LoginPage implements OnInit {
     this.router.navigateByUrl('sign-up')
   }
   Login(){
-    this.router.navigateByUrl('home')
+    this.router.navigateByUrl('tabs/tabs/home')
   }
 }

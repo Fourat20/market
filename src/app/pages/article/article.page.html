@@ -8,6 +8,10 @@
 
 
 <ion-content padding text-center>
+  <div  *ngFor="let offre of managementService.listOffre">
+
+
+  <div *ngIf="offre._id==offre_id">
 
   <ion-slides pager>
     <ion-slide>
@@ -21,12 +25,12 @@
     </ion-slide>
   </ion-slides>
 
-  <h4>Article's name</h4>
+  <h4>{{offre.name}}</h4>
 
   <p text-left>
     Description article 
     <br>
-   Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum molestiae voluptas nihil magnam, mollitia iste culpa dolore odit eveniet, cum sapiente est quae officiis quam impedit facere perspiciatis doloremque. Qui.
+    {{offre.description}}
     <br>
     Marque : New Look
   </p>
@@ -43,14 +47,14 @@
     </div>
     <div>
       <h5>Jusqu'au</h5>
-      <h5>01/02/2021</h5>
+      <h5  id="demo"></h5>
     </div>
-    <div>
+    <!-- <div>
       <h6>
         <h5>Localisation</h5>
       </h6>
       <h5>Aouina Tunis</h5>
-    </div>
+    </div> -->
     <!-- <div>
       <h5>
         Connexion
@@ -81,11 +85,13 @@
   <ion-button ion-button icon-only>
     <ion-icon name="heart"></ion-icon>
   </ion-button>
-  <ion-button ion-button icon-only>
-    <ion-icon name="alert"></ion-icon>
+  <ion-button ion-button icon-only href="{{offre.social_fb}}">
+    <ion-icon name="logo-facebook"></ion-icon>
   </ion-button>
+  <ion-button ion-button icon-only href="{{offre.location}}">
+    <ion-icon name="locate-outline"></ion-icon>
+    </ion-button>
 
-
-
-
+</div>
+</div>
 </ion-content>
