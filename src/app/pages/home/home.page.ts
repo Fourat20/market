@@ -17,6 +17,13 @@ slideOpts={slidesPerView:1,};
               private managementService:ManagementService) {
                 this.countDown()
               }
+              config={
+                spaceBetween:0,
+                centeredSlides:true,
+                slidesPerView:1.4,
+                loop:true,
+                autoplay:true
+              };
   ionSlideChange(slides){
 
   }
@@ -31,7 +38,10 @@ slideOpts={slidesPerView:1,};
     })
   }
   goCategorie(){
-    this.router.navigateByUrl('categorie')
+    this.router.navigateByUrl('tabs/tabs/categorie')
+  }
+  goGame(){
+    this.router.navigateByUrl('tabs/tabs/game')
   }
   get_list_produit(){
     this.managementService.get_list_produit()
