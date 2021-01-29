@@ -1,0 +1,45 @@
+<ion-content>
+  <ion-grid>
+    <ion-slides  [options]="config">
+      <ion-slide>
+        <img class="logo-img" src="../../assets/Home.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img class="logo-img" src="../../assets/Home.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img class="logo-img" src="../../assets/Home.jpg">
+      </ion-slide>
+    </ion-slides>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-card  class="item-ribbon" *ngFor="let card of cards" >
+      <span class="ribbon javascript">
+        <span>{{card.reduction}}</span>
+      </span>
+      <img [src]="card.imageUrl" (click)="cardTapped(card)"/>
+      <div class="card-fav" (click)="fav()"><ion-icon *ngIf="favorie==0" name="heart-outline"></ion-icon><ion-icon style="color: red;" *ngIf="favorie==1" name="heart-outline"></ion-icon></div>
+      <div class="card-title">{{card.title}}</div>
+      <div class="card-subtitle">{{card.subtitle}}</div>
+      <div class="card-badge"><ion-badge color="danger">66</ion-badge></div>
+      <div class="card-coupon"><p>200 coupons</p></div>
+    </ion-card>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+       <img src="../../../assets/article/pc1.jpg">
+       <p>vega book Plus ...</p>
+       <p class="pa">602.50 TND</p>
+      </ion-col>
+      <ion-col col-6>
+       <img src="../../../assets/article/pc1.jpg">
+       <p>vega book Plus ...</p>
+       <p class="pa">602.50 TND</p>
+     </ion-col>
+    </ion-row>
+   </ion-grid>
+
+</ion-content>

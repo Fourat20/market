@@ -1,30 +1,12 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-searchbar animated ></ion-searchbar>
-  </ion-toolbar>
+<ion-toolbar>
+  <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
+
+</ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div>
-    <ion-segment>
-      <ion-segment-button (click)="goCategorie()">
-        <ion-icon name="apps-outline"></ion-icon>
-        <ion-label>Categorie</ion-label>
-      </ion-segment-button>
-      <ion-segment-button (click)="go_Vetement()">
-        <ion-icon name="shirt-outline"></ion-icon>
-        <ion-label>Vetement</ion-label>
-      </ion-segment-button>
-      <ion-segment-button (click)="go_Maison()">
-        <ion-icon name="home-outline"></ion-icon>
-        <ion-label>Maison</ion-label>
-      </ion-segment-button>
-      <ion-segment-button (click)="go_Electronique()">
-        <ion-icon name="laptop-outline"></ion-icon>
-        <ion-label>Electronique</ion-label>
-      </ion-segment-button>
-  </ion-segment>
-  </div>
+
   <ion-grid>
     <ion-slides  [options]="config">
       <ion-slide>
@@ -39,6 +21,63 @@
     </ion-slides>
   </ion-grid>
 
+  <div>
+    <ion-segment>
+      <ion-slides class="categorie">
+        <ion-slide>
+      <ion-segment-button (click)="goCategorie()">
+        <img src="../../../assets/categorie/categories.svg">
+        <ion-label>Categorie</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Vetement()">
+        <img src="../../../assets/categorie/fashion.svg">
+        <ion-label>	Vêtements </ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Maison()">
+        <img src="../../../assets/categorie/electronics.svg">
+        <ion-label>High-tech</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/cosmetics.svg">
+        <ion-label>Beauté</ion-label>
+      </ion-segment-button>
+    </ion-slide>
+    <ion-slide>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/tray.svg">
+        <ion-label>Restauration</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/market.svg">
+        <ion-label>Marché</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/car.svg">
+        <ion-label>Automobile</ion-label>
+      </ion-segment-button>
+ 
+       <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/balloons.svg">
+        <ion-label>Déco</ion-label>
+      </ion-segment-button>
+    </ion-slide>
+    <ion-slide>
+     <ion-segment-button (click)="go_Electronique()">
+      <img src="../../../assets/categorie/bike.svg">
+        <ion-label>Loisir</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/necklace.svg">
+        <ion-label>Accessoires</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/support.svg">
+        <ion-label>Service </ion-label>
+      </ion-segment-button>
+    </ion-slide>
+    </ion-slides>
+  </ion-segment>
+  </div>
 <ion-grid>
   <span>Nos Collections</span>
 </ion-grid>

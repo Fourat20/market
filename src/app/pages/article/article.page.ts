@@ -72,4 +72,7 @@ var x = setInterval(function() {
   }
 }, 1000);
 }
+goSeller(){
+  this.router.navigate(['/tabs/tabs/seller'])
+}
 }

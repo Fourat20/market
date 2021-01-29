@@ -29,6 +29,14 @@ const routes: Routes = [
         path: 'game',
         loadChildren: () => import('../../pages/game/game.module').then( m => m.GamePageModule)
       },
+      {
+        path: 'news',
+        loadChildren: () => import('../../pages/news/news.module').then( m => m.NewsPageModule)
+      },
+      {
+        path: 'interest',
+        loadChildren: () => import('../../pages/interest/interest.module').then( m => m.InterestPageModule)
+      },
     ]
   },
   {
