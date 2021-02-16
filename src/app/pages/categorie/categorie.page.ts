@@ -27,7 +27,7 @@ export class CategoriePage {
         }
       }
       console.log("this.managementService.listOffre[i]._id "+this.managementService.listOffre[i]._id)
-this.router.navigate(['article'],id)
+this.router.navigate(['/tabs/tabs/article'],id)
     }
 
   go_Maison(){

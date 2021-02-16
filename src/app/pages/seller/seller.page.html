@@ -5,13 +5,18 @@
 </ion-header>
 
 <ion-content parallax-header no-bounce class="bg-modal">
+    <div *ngFor="let Provider of managementService.listProvider; let i = index">
+<div *ngIf="Provider._id==id_provider">
+
+
+   
   <div class="header-image"> <img class="logo-img" src={{user.coverImage}}></div>
  
   <div class="main-content" text-wrap text-center>
     <!-- <img class="logo-img" src={{user.profileImage}}> -->
-      <div class="circular">  <img class="logo-img" src={{user.profileImage}}></div>
-      <h2>{{user.name}}</h2>
-      <p>{{user.occupation}} &bull; {{user.location}}</p>
+      <div class="circular">  <img class="logo-img" src={{Provider.logo}}></div>
+      <h2>{{Provider.name}}</h2>
+      <p>{{user.occupation}} &bull; {{Provider.location}}</p>
       <p class="profile-description">{{user.description}}</p>
       <hr>
       <ion-list no-lines>
@@ -24,13 +29,13 @@
           <ion-item>
               <ion-icon item-start name="call" color="danger"></ion-icon>
               <p>Mobile: </p>
-              {{user.phone}}
+              {{Provider.phone}}
               <ion-button href="tel:{{user.phone}}" color="danger" item-end medium>Poke me</ion-button>
           </ion-item>
           <ion-item>
               <ion-icon item-start name="logo-whatsapp" color="secondary"></ion-icon>
               <p>Whatsapp: </p>
-              {{user.whatsapp}}
+              {{Provider.phone}}
               <ion-button color="secondary" item-end medium href="whatsapp://send?text=Hi from ionic&phone=+{{user.phone}}&abid=+{{user.phone}}">Open App</ion-button>
           </ion-item>
           <ion-item>
@@ -40,18 +45,19 @@
       </ion-list>
       <h2>Get in touch</h2>
       <hr>
-      <a href="#" button ion-button block color="linkedin" icon-start>
-          <ion-icon name='logo-linkedin'></ion-icon>
-          LinkedIn
+      <a href="Provider.social_fb" button ion-button block color="linkedin" icon-start>
+          <ion-icon name='logo-instagram'></ion-icon>
+          Instagram
       </a>
-      <a href="#" button ion-button block color="fb" icon-start>
+      <a href="Provider.social_fb" button ion-button block color="fb" icon-start>
           <ion-icon name='logo-facebook'></ion-icon>
           Facebook
       </a>
-      <a href="#" button ion-button block color="danger" icon-start>
+      <a href="Provider.social_fb" button ion-button block color="danger" icon-start>
           <ion-icon name='logo-youtube'></ion-icon>
           Youtube
       </a>
   </div>
-
+</div>
+</div>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ManagementService } from 'src/app/services/management.service/management.service';
 
 @Component({
@@ -8,21 +8,39 @@ import { ManagementService } from 'src/app/services/management.service/managemen
   styleUrls: ['./article.page.scss'],
 })
 export class ArticlePage implements OnInit {
-offre_id
-offre_details
+  offre_id
+  id
+  offre_details
+  page='Information'
   constructor(private route: ActivatedRoute,
               private router: Router,
               private managementService:ManagementService) {
 this.route.queryParams.subscribe(params=>{
- this.offre_id=params.id
-    console.log(params.id);
-  
- 
+  this.offre_id=params.id
+  // alert(params.id)
+  alert(JSON.stringify(this.managementService.Offre))
+  alert(this.offre_id)
+//  alert("managementService"+this.managementService.listOffre);
+//  alert("this.listOffre  " +this.offre_id);
+this.managementService.idOffre=params.id
+this.managementService.get_produit()
+this.managementService.get_list_provider()
+this.managementService.get_list_produit()
+
 })
+
+
+// alert(this.id)
+
    }
 
+
   async ngOnInit() {
-   await this.managementService.get_list_produit();
+    // await this.managementService.get_produit()
+   
+    
+    // alert("this "+JSON.stringify(this.idOffre));
+  //  await this.managementService.get_list_produit();
   //  await  this.get_produit_by_id()
   this.countDown()
   }
@@ -44,7 +62,7 @@ this.route.queryParams.subscribe(params=>{
 // }
 countDown(){
   // Set the date we're counting down to
-var countDownDate = new Date("Jan 20, 2021 15:37:25").getTime();
+var countDownDate = new Date("Jan 31, 2021 23:37:25").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -72,7 +90,21 @@ var x = setInterval(function() {
   }
 }, 1000);
 }
-goSeller(){
-  this.router.navigate(['/tabs/tabs/seller'])
+
+goSeller(i){
+  alert(this.managementService.Offre)
+  let id:NavigationExtras={
+    queryParams:{
+      id:this.managementService.listProvider[i]._id
+    }
+  }
+
+  this.router.navigate(['/tabs/tabs/seller'],id)
 }
+goInformation(){
+this.page="Information"
+}
+goInformation2(){
+  this.page="Information2"
+  }
 }

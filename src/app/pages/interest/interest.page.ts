@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./interest.page.scss'],
 })
 export class InterestPage implements OnInit {
-
+  iterested
   constructor() { }
 
   ngOnInit() {
   }
-
+  selected(iterested){
+    console.log("iterested "+iterested);
+    
+  }
 }

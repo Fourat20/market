@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
   },
   {
-    path: 'article',
-    loadChildren: () => import('./pages/article/article.module').then( m => m.ArticlePageModule)
-  },
-  {
     path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
   },
@@ -34,6 +30,10 @@ const routes: Routes = [
   {
     path: 'videopopup',
     loadChildren: () => import('./pages/videopopup/videopopup.module').then( m => m.VideopopupPageModule)
+  },
+  {
+    path: 'pub',
+    loadChildren: () => import('./pages/pub/pub.module').then( m => m.PubPageModule)
   }
 
 ];

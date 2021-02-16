@@ -1,13 +1,16 @@
 
 .logo-img{
   display: block;
-  width: auto;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
 }
 ion-segment-button {
   background-color:  rgb(239, 239, 255);;
 }
+// ion-card{
+//   width: 50%;
+// }
 ion-grid{
   background-color: rgb(239, 239, 255);
   ion-col{
@@ -25,7 +28,206 @@ ion-grid{
 }
 .categorie{
   img{
-    height: 29px;
+    height: 45px;
+    border-radius: 30%; 
+    border: 3px blue inset;
+  }
+}
+.fav{
+  // background-color: yellow;
+  margin-right: 20px;
+  display: block;
+  margin-top: -50px;
+  float: right;
+  width: 30px;
+}
+
+.filtre{
+  // background-color: yellow;
+  margin-right: 55px;
+  display: block;
+  margin-top: -50px;
+  float: right;
+  width: 30px;
+}
+
+
+//article
+
+ion-card {
+  position: relative;
+  text-align: center;
+  filter : brightness(80%);
+  
+}
+.card-title {
+  position: relative;
+  top: 80%;
+  text-align: left;
+  font-size: 1.5em;
+  width: 100%;
+  height: 150%;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  // text-shadow: 2px 2px rgb(255, 255, 255);
+}
+.card-subtitle {
+  font-size: 0.9em;
+  position: relative;
+  top: 94%;
+  width: 100%;
+  text-align: left;
+  color: rgb(0, 0, 0);
+}
+.card-badge{
+  position: absolute;
+  right:80%;
+  top: 58%;
+}
+.card-fav{
+  position: absolute;
+  top: 50%;
+  left:75%;
+  font-size: 5.0em;
+  width: 10px;
+  height: 10px;
+}
+ion-icon{
+  width: 40px;
+  height: 40px;
+}
+.card-coupon{
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  //
+  // background: rgb(0, 0, 0);
+  // color: gold!important;
+  left: 1%;
+  top: 1%;
+  p{
+    left: 32%;
+    top: 1%;
+    font-size: 15px;
+    position: absolute;
+    color: rgb(0, 0, 0);
+    text-align: center;
+  }
+
+  // img:hover{
+  
+   
+  //     fill: red;
+    
+  // }
+}
+.card-prix{
+  font-size: 1.2em;
+  position: relative;
+  top: 80%;
+  left: 68%;
+  width: 100%;
+  text-align: left;
+  color: rgb(255, 0, 8);
+}
+
+
+.shadowcard{
+  box-shadow: 6px 6px 6px black;
+}
+
+
+
+
+@mixin ribbonize ($ribbon-color, $text-color: white, $border-width: 3px) {
+  span {
+    color: $text-color;
+    background: $ribbon-color;
+    &::before {
+      border-left: $border-width solid $ribbon-color;
+      border-top: $border-width solid $ribbon-color;
+    }
+    &::after {
+      border-right: $border-width solid $ribbon-color;
+      border-top: $border-width solid $ribbon-color;
+    }
   }
 }
 
+$default: #f53d3d;
+$cruzeiro: #387ef5;
+$atletico: darken(#f4f4f4, 45%);
+$javascript: #f7e023;
+
+.item-ribbon{
+  background-color: #fff;
+  position: relative;
+  filter: none;
+  opacity: 1;
+  .ribbon {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    z-index: 2;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
+    text-align: right;
+    span {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 20px;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      width: 100px;
+      display: block;
+      background: $default;
+      border:1px solid rgb(0, 0, 0);
+      padding:1px;
+      position: absolute;
+      top: 19px;
+      right: -21px;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 100%;
+        z-index: -1;
+        border-left: 3px solid $default;
+        border-right: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        border-top: 3px solid $default;
+        border:1px solid rgb(0, 0, 0);
+        padding:1px;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 100%;
+        z-index: -1;
+        border-left: 3px solid transparent;
+        border-right: 3px solid $default;
+        border-bottom: 3px solid transparent;
+        border-top: 3px solid $default;
+        border:1px solid rgb(0, 0, 0);
+        padding:1px;
+      }
+    }
+  }
+}
+
+.ribbon.cruzeiro {
+  @include ribbonize($cruzeiro);
+}
+
+.ribbon.atletico {
+  @include ribbonize($atletico);
+}
+
+.ribbon.javascript {
+  @include ribbonize($javascript, black);
+}

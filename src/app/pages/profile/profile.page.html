@@ -11,6 +11,18 @@
       <span class="infos_nick">{{user.twitter}}</span>
     <div class="iconedit"> <ion-icon  name="create-outline"></ion-icon> </div>
     </div>
+
+    <ion-segment>
+
+      <ion-segment-button (click)="goNotification()">
+        <!-- <img src="../../../assets/categorie/categories.svg"> -->
+        <ion-label>Notification</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="goForsa()">
+        <!-- <img src="../../../assets/categorie/fashion.svg"> -->
+        <ion-label>	Forsa </ion-label>
+      </ion-segment-button>
+  </ion-segment>
     <!-- <div class="card-profile_user-stats">
       <div class="stats-holder">
         <div class="user-stats">
@@ -27,7 +39,42 @@
         </div>
       </div>
     </div> -->
-    <div >
+    <div  *ngIf="status=='forsa'">
+      <ion-card *ngFor="let post of posts">
+        <ion-item>
+          <ion-avatar item-start>
+            <img [src]="user.profileImage">
+          </ion-avatar>
+          <!-- <h2 class="sticky">Forsa</h2> -->
+          <p>{{post.code}}</p>
+        </ion-item>
+        <!-- <img [src]="post.postImageUrl" (click)="imageTapped(post)"> -->
+        <ion-card-content>
+          <p>{{post.date}}</p>
+        </ion-card-content>
+        <!-- <ion-row>
+          <ion-col>
+            <button ion-button color="purple" clear small icon-left (click)="like(post)">
+                <ion-icon name='thumbs-up'></ion-icon>
+                {{post.likes}} Likes
+              </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button color="purple" clear small icon-left (click)="comment(post)">
+                <ion-icon name='text'></ion-icon>
+                {{post.comments}} Comments
+              </button>
+          </ion-col>
+          <ion-col align-self-center text-center>
+            <p>
+              {{post.timestamp}}
+            </p>
+          </ion-col>
+        </ion-row> -->
+      </ion-card>
+    </div>
+
+    <div  *ngIf="status=='notification'">
       <ion-card *ngFor="let post of posts">
         <ion-item>
           <ion-avatar item-start>
