@@ -12,6 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 //native
 import {HTTP} from '@ionic-native/http/ngx';
+import {IonicStorageModule} from '@ionic/Storage';
+
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+// import { Facebook } from '@ionic-native/facebook/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,10 +24,13 @@ import {HTTP} from '@ionic-native/http/ngx';
      IonicModule.forRoot(),
       AppRoutingModule,
       HttpClientModule,
+      IonicStorageModule.forRoot(), 
     ],
   providers: [
     StatusBar,
     SplashScreen,
+    GooglePlus,
+    // Facebook,
     HTTP,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

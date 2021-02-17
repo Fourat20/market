@@ -8,11 +8,12 @@ import { AuthService } from 'src/app/services/auth.service/auth.service';
   styleUrls: ['./sign-up.page.scss'],
 })
 export class SignUpPage implements OnInit {
-  Email
   password
-  Full_name
+  name
+  email
+
   constructor(private router: Router,
-              private authService: AuthService) { }
+              private auth: AuthService) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,9 @@ export class SignUpPage implements OnInit {
   }
   SignUp(){
     // this.router.navigateByUrl('home')
-    this.authService.signup()
+this.auth.name=this.name
+this.auth.email=this.email
+this.auth.password=this.password
+    this.auth.signup()
   }
 }

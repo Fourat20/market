@@ -5,13 +5,15 @@
 </ion-header>
 
 <ion-content>
-<ion-grid>
+<ion-grid >
+  <ion-radio-group  [(ngModel)]="iterested">
   <ion-row>
-    <ion-col col-3>
+    <ion-col col-3  value="Sport">
       <img src="../../../assets/interest/sport.svg">
 <p>Sport</p>
+<ion-radio  value="Sport"> </ion-radio>
     </ion-col>
-    <ion-col col-3>
+    <ion-col col-3 value="Voyage">
       <img src="../../../assets/interest/voyage.svg">
       <p>Voyage</p> 
     </ion-col>
@@ -60,5 +62,6 @@
       <p>Voyage</p> 
     </ion-col>
   </ion-row>
+</ion-radio-group>
 </ion-grid>
 </ion-content>

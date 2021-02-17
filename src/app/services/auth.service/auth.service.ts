@@ -5,35 +5,55 @@ import { HTTP } from '@ionic-native/http/ngx';
   providedIn: 'root'
 })
 export class AuthService {
-  urlGlobal="http://vps-b56f4fee.vps.ovh.net"
+  urlGlobal="https://shop.lunura.com"
+  AccessToken: any;
+  name
+  email
+  password
+
   constructor(private httpClient: HttpClient,
               private nativeHttp: HTTP,) { }
 
 signup(){
   let postData = {
-    "first_name": "Fourat",
-    "last_name": "Brahmi",
-    "birth_date": "24/07/1993",
-    "mail": "Fourat@email.com",
-    "sexe": "M",
-    "password": "1248163264",
+    "name": this.name,
+    "email": this.email,
+    "password":  this.password,
+},
+headers= {
+  'Content-Type': 'application/x-www-form-urlencoded',
 }
-  // this.httpClient.post(this.urlGlobal+"/user/signup",postData).subscribe(
-  //   result => {
-  //     console.log("result "+JSON.stringify(result));
-  //       },
-  //      err => {
-  //       console.log('err '+JSON.stringify(err));
-  //     })
-
 
   // END checking
    this.nativeHttp
-    .post(this.urlGlobal+"/user/signup",{postData},{})
+    .post(this.urlGlobal+"/api/user/signup",postData,headers)
     .then(async (data) => {
-     
-      alert('data SignUp: '+ JSON.stringify (data))
+      var u_data = JSON.parse(data.data);
+
+      alert('data SignUp: '+ JSON.stringify (u_data))
    
+    })
+    .catch((error) => {
+      alert("err token: "+JSON.stringify (error))
+    });
+
+
+}
+
+login(){
+  let postData = {
+    "email": this.email,
+    "password": this.password,
+},
+headers= {
+  'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+}
+   this.nativeHttp
+    .post(this.urlGlobal+"/api/user/login",postData,headers)
+    .then(async (data) => {
+      var u_data = JSON.parse(data.data);
+      alert('AccessToken: '+ u_data.token)
+      this.AccessToken= u_data.token
     })
     .catch((error) => {
       alert("err token: "+JSON.stringify (error))

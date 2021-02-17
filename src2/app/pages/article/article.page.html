@@ -1,0 +1,97 @@
+<!-- <ion-header>
+
+  <ion-navbar color="bluedouks">
+    <ion-title>JEANNE VEND</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content padding text-center>
+  <div  *ngFor="let offre of managementService.listOffre">
+
+
+  <div *ngIf="offre._id==offre_id">
+
+  <ion-slides pager>
+    <ion-slide>
+      <img src="../../assets/article/pc1.jpg" />
+    </ion-slide>
+    <ion-slide>
+      <img src="../../assets/article/pc2.jpg" />
+    </ion-slide>
+    <ion-slide>
+      <img src="../../assets/article/pc3.jpg" />
+    </ion-slide>
+  </ion-slides>
+
+  <h4>{{offre.name}}</h4>
+
+  <p text-left>
+    Description article 
+    <br>
+    {{offre.description}}
+    <br>
+    Marque : New Look
+  </p>
+
+  <div class="details">
+    <div>
+      <h5>Prix</h5>
+      <h5>prix $</h5>
+    </div>
+
+    <div>
+      <h5>Date de promotion</h5>
+      <h5>31/12/2020</h5>
+    </div>
+    <div>
+      <h5>Jusqu'au</h5>
+      <h5  id="demo"></h5>
+    </div>
+    <!-- <div>
+      <h6>
+        <h5>Localisation</h5>
+      </h6>
+      <h5>Aouina Tunis</h5>
+    </div> -->
+    <!-- <div>
+      <h5>
+        Connexion
+      </h5>
+      <h5>0</h5>
+    </div> -->
+    <div class="person" (click)="goSeller()">
+      <div>
+        <img src="../../assets/article/avatar.png" />
+        <h6>Nom du vendeur</h6>
+      </div>
+      <!-- <div>
+        <img src="https://www.douks.fr/storage/avatars/10215767826446440-4Ayqp.jpg" />
+        <h6>Jeanne Siracosky</h6>
+      </div> -->
+
+    </div>
+  </div>
+
+  <!-- <ion-button ion-button block>EXAUCER</ion-button> -->
+  <ion-button block icon-left>
+    <ion-icon name="cart-outline"></ion-icon>
+    
+  </ion-button>
+  <!-- <ion-button ion-button icon-only>
+    <ion-icon name="help"></ion-icon>
+  </ion-button> -->
+  <ion-button ion-button icon-only>
+    <ion-icon name="heart"></ion-icon>
+  </ion-button>
+  <ion-button ion-button icon-only href="{{offre.social_fb}}">
+    <ion-icon name="logo-facebook"></ion-icon>
+  </ion-button>
+  <ion-button ion-button icon-only href="{{offre.location}}">
+    <ion-icon name="locate-outline"></ion-icon>
+    </ion-button>
+
+</div>
+</div>
+</ion-content>

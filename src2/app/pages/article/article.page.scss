@@ -1,0 +1,38 @@
+
+    ion-slides {
+        height: fit-content;
+    }
+    h4, h5{
+        color: #488aff;
+    }
+    .details {
+        display: flex;
+        flex-direction: column;
+        >div {
+            border-top: 1px solid #488aff;
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            h5,
+            h6 {
+                margin: 0;
+                color:  #488aff;
+            }
+        }
+        .person {
+            display: block;
+            >div {
+                display: flex;
+                // justify-content: space-between;
+                align-items: center;
+                padding: 10px 20%;
+                img {
+                    width: 25%;
+                    height: auto;
+                    margin: 0 20px;
+                }
+            }
+        }
+    }

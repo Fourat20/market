@@ -15,39 +15,60 @@
 
   <ion-slides pager>
     <ion-slide>
-      <img src="../../assets/article/pc1.jpg" />
+      <img  [src] ="offre.image" />
     </ion-slide>
     <ion-slide>
-      <img src="../../assets/article/pc2.jpg" />
+      <img  [src] ="offre.image" />
     </ion-slide>
     <ion-slide>
-      <img src="../../assets/article/pc3.jpg" />
+      <img  [src] ="offre.image"/>
     </ion-slide>
   </ion-slides>
 
-  <h4>{{offre.name}}</h4>
+  <ion-segment>
+
+    <ion-segment-button (click)="goInformation()">
+      <!-- <img src="../../../assets/categorie/categories.svg"> -->
+      <ion-label>Information</ion-label>
+    </ion-segment-button>
+    <ion-segment-button (click)="goInformation2()">
+      <!-- <img src="../../../assets/categorie/fashion.svg"> -->
+      <ion-label>	Information2 </ion-label>
+    </ion-segment-button>
+</ion-segment>
+<ion-grid *ngIf="page=='Information'">
+
+  <h4>{{offre.title}}</h4>
 
   <p text-left>
     Description article 
     <br>
     {{offre.description}}
     <br>
-    Marque : New Look
+    <!-- Marque : New Look -->
   </p>
 
   <div class="details">
     <div>
       <h5>Prix</h5>
-      <h5>prix $</h5>
+      <h5>{{offre.price_after}} TND</h5>
     </div>
 
     <div>
       <h5>Date de promotion</h5>
-      <h5>31/12/2020</h5>
+      <h5> {{offre.end_date}}</h5>
     </div>
     <div>
       <h5>Jusqu'au</h5>
       <h5  id="demo"></h5>
+    </div>
+    <div>
+      <h5>coupon_code</h5>
+      <!-- <h5  >{{managementService.Offre.promo.coupon_code}}</h5> -->
+    </div>
+    <div>
+      <h5>discount</h5>
+      <!-- <h5  >{{managementService.Offre.promo.discount}}</h5> -->
     </div>
     <!-- <div>
       <h6>
@@ -61,27 +82,74 @@
       </h5>
       <h5>0</h5>
     </div> -->
-    <div class="person" (click)="goSeller()">
-      <div>
-        <img src="../../assets/article/avatar.png" />
-        <h6>Nom du vendeur</h6>
-      </div>
-      <!-- <div>
-        <img src="https://www.douks.fr/storage/avatars/10215767826446440-4Ayqp.jpg" />
-        <h6>Jeanne Siracosky</h6>
-      </div> -->
+    <div class="person">
+      <div *ngFor="let Provider of managementService.listProvider ; let i = index "  (click)="goSeller(i)">
+    
+      <ion-row *ngIf="Provider._id==offre.provider">
+        <ion-col col-6>
+          <img [src]="Provider.logo" />
+        </ion-col>
+        <ion-col col-6>
+          <h3>{{Provider.name}}</h3>
+        </ion-col>
+      </ion-row>
+    </div>
 
+      <ion-grid>
+        <ion-slides>
+        
+            <div *ngFor="let off of managementService.listOffre ; let i = index">
+                <ion-row *ngIf="off.provider==offre.provider">
+                  <ion-slide *ngIf="i<2">
+                  <ion-col col-6>
+                   <img  [src] ="off.image">
+                   <p>{{off.title}}</p>
+                   <p class="pa">{{off.price_after}} TND</p>
+                  </ion-col>
+                </ion-slide>
+                  <!-- <ion-col col-6>
+                   <img src="../../../assets/article/pc1.jpg">
+                   <p>vega book Plus ...</p>
+                   <p class="pa">602.50 TND</p>
+                 </ion-col> -->
+                </ion-row>
+            </div>
+     
+      <!-- <ion-slide>
+        <ion-row>
+          <ion-col col-6>
+           <img src="../../../assets/article/pc1.jpg">
+           <p>vega book Plus ...</p>
+           <p class="pa">602.50 TND</p>
+          </ion-col>
+          <ion-col col-6>
+           <img src="../../../assets/article/pc1.jpg">
+           <p>vega book Plus ...</p>
+           <p class="pa">602.50 TND</p>
+         </ion-col>
+        </ion-row>
+      </ion-slide> -->
+      <!-- <ion-slide>
+        <ion-row>
+          <ion-col col-6>
+           <img src="../../../assets/article/pc1.jpg">
+           <p>vega book Plus ...</p>
+           <p class="pa">602.50 TND</p>
+          </ion-col>
+          <ion-col col-6>
+           <img src="../../../assets/article/pc1.jpg">
+           <p>vega book Plus ...</p>
+           <p class="pa">602.50 TND</p>
+         </ion-col>
+        </ion-row>
+      </ion-slide> -->
+      </ion-slides>
+       </ion-grid>
     </div>
   </div>
+</ion-grid>
 
-  <!-- <ion-button ion-button block>EXAUCER</ion-button> -->
-  <ion-button block icon-left>
-    <ion-icon name="cart-outline"></ion-icon>
-    
-  </ion-button>
-  <!-- <ion-button ion-button icon-only>
-    <ion-icon name="help"></ion-icon>
-  </ion-button> -->
+<ion-grid *ngIf="page=='Information2'">
   <ion-button ion-button icon-only>
     <ion-icon name="heart"></ion-icon>
   </ion-button>
@@ -91,7 +159,34 @@
   <ion-button ion-button icon-only href="{{offre.location}}">
     <ion-icon name="locate-outline"></ion-icon>
     </ion-button>
+</ion-grid>
+  <!-- <ion-button ion-button block>EXAUCER</ion-button> -->
+  <!-- <ion-button block icon-left>
+    <ion-icon name="cart-outline"></ion-icon>
+    
+  </ion-button> -->
+  <!-- <ion-button ion-button icon-only>
+    <ion-icon name="help"></ion-icon>
+  </ion-button> -->
 
 </div>
 </div>
+<!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button  >
+    <ion-icon name="share-social-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab> -->
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+  <ion-fab-button  class="pop-in" > <ion-icon name="share-social-outline"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-fab-button  color="primary">
+      <ion-icon  name="logo-facebook"></ion-icon>
+    </ion-fab-button >
+    <ion-fab-button  color="danger">
+      <ion-icon name="logo-instagram"></ion-icon>
+    </ion-fab-button >
+  </ion-fab-list>
+</ion-fab>
 </ion-content>

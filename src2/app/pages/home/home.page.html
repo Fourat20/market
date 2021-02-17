@@ -1,0 +1,240 @@
+<ion-header [translucent]="true">
+<ion-toolbar>
+  <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
+
+</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-slides  [options]="config">
+      <ion-slide>
+        <img class="logo-img" src="../../assets/Home.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img class="logo-img" src="../../assets/Home.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img class="logo-img" src="../../assets/Home.jpg">
+      </ion-slide>
+    </ion-slides>
+  </ion-grid>
+
+  <div>
+    <ion-segment>
+      <ion-slides class="categorie">
+        <ion-slide>
+      <ion-segment-button (click)="goCategorie()">
+        <img src="../../../assets/categorie/categories.svg">
+        <ion-label>Categorie</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Vetement()">
+        <img src="../../../assets/categorie/fashion.svg">
+        <ion-label>	Vêtements </ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Maison()">
+        <img src="../../../assets/categorie/electronics.svg">
+        <ion-label>High-tech</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/cosmetics.svg">
+        <ion-label>Beauté</ion-label>
+      </ion-segment-button>
+    </ion-slide>
+    <ion-slide>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/tray.svg">
+        <ion-label>Restauration</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/market.svg">
+        <ion-label>Marché</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/car.svg">
+        <ion-label>Automobile</ion-label>
+      </ion-segment-button>
+ 
+       <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/balloons.svg">
+        <ion-label>Déco</ion-label>
+      </ion-segment-button>
+    </ion-slide>
+    <ion-slide>
+     <ion-segment-button (click)="go_Electronique()">
+      <img src="../../../assets/categorie/bike.svg">
+        <ion-label>Loisir</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/necklace.svg">
+        <ion-label>Accessoires</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="go_Electronique()">
+        <img src="../../../assets/categorie/support.svg">
+        <ion-label>Service </ion-label>
+      </ion-segment-button>
+    </ion-slide>
+    </ion-slides>
+  </ion-segment>
+  </div>
+<ion-grid>
+  <span>Nos Collections</span>
+</ion-grid>
+
+  <!-- <img class="logo-img" src="../../assets/home/annonce.png"> -->
+ 
+<ion-grid>
+ <ion-row>
+   <ion-col col-6>
+    <img src="../../../assets/article/pc1.jpg">
+    <p>vega book Plus ...</p>
+    <p class="pa">602.50 TND</p>
+   </ion-col>
+   <ion-col col-6>
+    <img src="../../../assets/article/pc1.jpg">
+    <p>vega book Plus ...</p>
+    <p class="pa">602.50 TND</p>
+  </ion-col>
+ </ion-row>
+</ion-grid>
+<!-- <ion-button (click)="getListeProduit()">getListeProduit</ion-button> -->
+<ion-grid>
+  <ion-row style="background-color: red;">
+  <p style="color: white; font-size: 19px;">  Offre special </p>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;
+  <p  style="color: white; font-size: 19px;"  id="demo"></p>
+  </ion-row>
+</ion-grid>
+
+<ion-grid>
+  <ion-row>
+    <ion-col col-3>
+     <img src="../../../assets/article/pc1.jpg">
+     <p>vega book Plus ...</p>
+     <p class="pa">602.50 TND</p>
+    </ion-col>
+    <ion-col col3>
+     <img src="../../../assets/article/pc1.jpg">
+     <p>vega book Plus ...</p>
+     <p class="pa">602.50 TND</p>
+   </ion-col>
+   <ion-col col3>
+    <img src="../../../assets/article/pc1.jpg">
+    <p>vega book Plus ...</p>
+    <p class="pa">602.50 TND</p>
+   </ion-col>
+   <ion-col col-3>
+    <img src="../../../assets/article/pc1.jpg">
+    <p>vega book Plus ...</p>
+    <p class="pa">602.50 TND</p>
+   </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3>
+     <img src="../../../assets/article/pc1.jpg">
+     <p>vega book Plus ...</p>
+     <p class="pa">602.50 TND</p>
+    </ion-col>
+    <ion-col col3>
+     <img src="../../../assets/article/pc1.jpg">
+     <p>vega book Plus ...</p>
+     <p class="pa">602.50 TND</p>
+   </ion-col>
+   <ion-col col3>
+    <img src="../../../assets/article/pc1.jpg">
+    <p>vega book Plus ...</p>
+    <p class="pa">602.50 TND</p>
+   </ion-col>
+   <ion-col col-3>
+    <img src="../../../assets/article/pc1.jpg">
+    <p>vega book Plus ...</p>
+    <p class="pa">602.50 TND</p>
+   </ion-col>
+  </ion-row>
+ </ion-grid>
+ <ion-grid>
+  <ion-slides pager>
+    <ion-slide>
+      <img class="logo-img" src="../../assets/Home.jpg">
+    </ion-slide>
+    <ion-slide>
+      <img class="logo-img" src="../../assets/Home.jpg">
+    </ion-slide>
+    <ion-slide>
+      <img class="logo-img" src="../../assets/Home.jpg">
+    </ion-slide>
+  </ion-slides>
+</ion-grid>
+<ion-grid>
+  <ion-row>
+    <ion-col col-6>
+     <img src="../../../assets/article/pc1.jpg">
+     <p>vega book Plus ...</p>
+     <p class="pa">602.50 TND</p>
+    </ion-col>
+    <ion-col col-6>
+     <img src="../../../assets/article/pc1.jpg">
+     <p>vega book Plus ...</p>
+     <p class="pa">602.50 TND</p>
+   </ion-col>
+  </ion-row>
+ </ion-grid>
+
+ <ion-grid>
+  <ion-row>
+    <ion-col col-3>
+     <img src="../../../assets/article/pc1.jpg">
+     <p>vega book Plus ...</p>
+     <p class="pa">602.50 TND</p>
+    </ion-col>
+    <ion-col col3>
+     <img src="../../../assets/article/pc1.jpg">
+     <p>vega book Plus ...</p>
+     <p class="pa">602.50 TND</p>
+   </ion-col>
+   <ion-col col3>
+    <img src="../../../assets/article/pc1.jpg">
+    <p>vega book Plus ...</p>
+    <p class="pa">602.50 TND</p>
+   </ion-col>
+   <ion-col col-3>
+    <img src="../../../assets/article/pc1.jpg">
+    <p>vega book Plus ...</p>
+    <p class="pa">602.50 TND</p>
+   </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3>
+     <img src="../../../assets/article/pc1.jpg">
+     <p>vega book Plus ...</p>
+     <p class="pa">602.50 TND</p>
+    </ion-col>
+    <ion-col col3>
+     <img src="../../../assets/article/pc1.jpg">
+     <p>vega book Plus ...</p>
+     <p class="pa">602.50 TND</p>
+   </ion-col>
+   <ion-col col3>
+    <img src="../../../assets/article/pc1.jpg">
+    <p>vega book Plus ...</p>
+    <p class="pa">602.50 TND</p>
+   </ion-col>
+   <ion-col col-3>
+    <img src="../../../assets/article/pc1.jpg">
+    <p>vega book Plus ...</p>
+    <p class="pa">602.50 TND</p>
+   </ion-col>
+  </ion-row>
+ </ion-grid>
+
+ <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="danger" (click)="goGame()">
+    <ion-icon name="game-controller-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+</ion-content>

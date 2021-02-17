@@ -1,0 +1,158 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>back</ion-back-button>
+    </ion-buttons>
+    <ion-searchbar animated></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size="3">
+      <ion-segment>
+        <ion-segment-button (click)="go_All()">
+          <ion-icon name="albums-outline"></ion-icon>
+          <ion-label>All</ion-label>
+        </ion-segment-button>
+        <ion-segment-button (click)="go_Vetement()">
+          <ion-icon name="shirt-outline"></ion-icon>
+          <ion-label>Vetement</ion-label>
+        </ion-segment-button>
+        <ion-segment-button (click)="go_Maison()">
+          <ion-icon name="home-outline"></ion-icon>
+          <ion-label>Maison</ion-label>
+        </ion-segment-button>
+        <ion-segment-button (click)="go_Electronique()">
+          <ion-icon name="laptop-outline"></ion-icon>
+          <ion-label>Electronique</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+    </ion-col>
+    <ion-col size="9">
+      <div *ngIf="value=='All'">
+        <ion-row>
+        <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
+          <div (click)="OffreDetails(i)">
+            <img src="../../../assets/article/pc1.jpg">
+           <p style="text-align: center;"> {{offre.name}}</p> 
+          </div>
+        </ion-col>
+
+      </ion-row>
+
+
+    </div>
+      <div *ngIf="value=='Electronique'">
+        <ion-row>
+        <ion-col size="4">
+          <div>
+            <img src="../../../assets/article/pc1.jpg">
+           <p style="text-align: center;"> Pc1</p> 
+          </div>
+         
+        </ion-col>
+        <ion-col size="4">
+          <div>
+            <img src="../../../assets/article/pc2.jpg">
+           <p style="text-align: center;"> Pc2</p> 
+          </div>
+        </ion-col>
+        <ion-col size="4">
+          <div>
+            <img src="../../../assets/article/pc3.jpg">
+           <p style="text-align: center;"> Pc3</p> 
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <div>
+            <img src="../../../assets/article/pc1.jpg">
+           <p style="text-align: center;"> Pc1</p> 
+          </div>
+         
+        </ion-col>
+        <ion-col size="4">
+          <div>
+            <img src="../../../assets/article/pc2.jpg">
+           <p style="text-align: center;"> Pc2</p> 
+          </div>
+        </ion-col>
+        <ion-col size="4">
+          <div>
+            <img src="../../../assets/article/pc3.jpg">
+           <p style="text-align: center;"> Pc3</p> 
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <div>
+            <img src="../../../assets/article/pc1.jpg">
+           <p style="text-align: center;"> Pc1</p> 
+          </div>
+         
+        </ion-col>
+        <ion-col size="4">
+          <div>
+            <img src="../../../assets/article/pc2.jpg">
+           <p style="text-align: center;"> Pc2</p> 
+          </div>
+        </ion-col>
+        <ion-col size="4">
+          <div>
+            <img src="../../../assets/article/pc3.jpg">
+           <p style="text-align: center;"> Pc3</p> 
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div *ngIf="value=='Vetement'">
+      <ion-row>
+      <ion-col size="4">
+        <div>
+          <img src="../../../assets/article/t-shirt.jpg">
+         <p style="text-align: center;"> T-shirt</p> 
+        </div>
+       
+      </ion-col>
+      <ion-col size="4">
+        <div>
+          <img src="../../../assets/article/t-shirt.jpg">
+         <p style="text-align: center;"> T-shirt</p> 
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div>
+          <img src="../../../assets/article/t-shirt.jpg">
+         <p style="text-align: center;"> T-shirt</p> 
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <div>
+          <img src="../../../assets/article/t-shirt.jpg">
+         <p style="text-align: center;"> T-shirt</p> 
+        </div>
+       
+      </ion-col>
+      <ion-col size="4">
+        <div>
+          <img src="../../../assets/article/t-shirt.jpg">
+         <p style="text-align: center;"> T-shirt</p> 
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div>
+          <img src="../../../assets/article/t-shirt.jpg">
+         <p style="text-align: center;"> T-shirt</p> 
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+    </ion-col>
+  </ion-row>
+ 
+</ion-content>

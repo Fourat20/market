@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>game</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-slides pager>
+  <ion-slide *ngFor="let video of items">
+    <ion-card (click)="videomodal(video.url)">
+      <ion-img [src]="video.images" alt="" srcset=""></ion-img>
+    </ion-card>
+  </ion-slide>
+</ion-slides>
+</ion-content>

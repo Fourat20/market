@@ -10,23 +10,60 @@
 <ion-content>
   <ion-row>
     <ion-col size="3">
-      <ion-segment>
+      <ion-segment  class="categorie">
+        <!-- <ion-slides class="categorie">
+        <ion-slide> -->
         <ion-segment-button (click)="go_All()">
-          <ion-icon name="albums-outline"></ion-icon>
+          <img src="../../../assets/categorie/categories.svg">
           <ion-label>All</ion-label>
         </ion-segment-button>
         <ion-segment-button (click)="go_Vetement()">
-          <ion-icon name="shirt-outline"></ion-icon>
+          <img src="../../../assets/categorie/fashion.svg">
           <ion-label>Vetement</ion-label>
         </ion-segment-button>
         <ion-segment-button (click)="go_Maison()">
-          <ion-icon name="home-outline"></ion-icon>
-          <ion-label>Maison</ion-label>
+          <img src="../../../assets/categorie/cpu.svg">
+          <ion-label>High-tech</ion-label>
         </ion-segment-button>
         <ion-segment-button (click)="go_Electronique()">
-          <ion-icon name="laptop-outline"></ion-icon>
-          <ion-label>Electronique</ion-label>
+          <img src="../../../assets/categorie/cosmetics.svg">
+          <ion-label>Beauté</ion-label>
         </ion-segment-button>
+
+        <ion-segment-button (click)="go_Electronique()">
+          <img src="../../../assets/categorie/food.svg">
+          <ion-label>Restauration</ion-label>
+        </ion-segment-button>
+        <ion-segment-button (click)="go_Electronique()">
+          <img src="../../../assets/categorie/market.svg">
+          <ion-label>Marché</ion-label>
+        </ion-segment-button>
+      <!-- </ion-slide>
+      <ion-slide> -->
+        <ion-segment-button (click)="go_Electronique()">
+          <img src="../../../assets/categorie/car.svg">
+          <ion-label>Automobile</ion-label>
+        </ion-segment-button>
+ 
+         <ion-segment-button (click)="go_Electronique()">
+          <img src="../../../assets/categorie/shelves.svg">
+          <ion-label>Déco</ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button (click)="go_Electronique()">
+          <img src="../../../assets/categorie/bike.svg">
+            <ion-label>Loisir</ion-label>
+          </ion-segment-button>
+          <ion-segment-button (click)="go_Electronique()">
+            <img src="../../../assets/categorie/necklace.svg">
+            <ion-label>Accessoires</ion-label>
+          </ion-segment-button>
+          <ion-segment-button (click)="go_Electronique()">
+            <img src="../../../assets/categorie/customer.svg">
+            <ion-label>Service </ion-label>
+          </ion-segment-button>
+        <!-- </ion-slide>
+        </ion-slides> -->
     </ion-segment>
     </ion-col>
     <ion-col size="9">
@@ -34,9 +71,10 @@
         <ion-row>
         <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
           <div (click)="OffreDetails(i)">
-            <img src="../../../assets/article/pc1.jpg">
-           <p style="text-align: center;"> {{offre.name}}</p> 
+            <img   src={{offre.image}}> 
           </div>
+           <p style="text-align: center;"> {{offre.title}}</p>
+          
         </ion-col>
 
       </ion-row>

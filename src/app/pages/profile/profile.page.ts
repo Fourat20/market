@@ -15,7 +15,7 @@ export class ProfilePage implements OnInit {
              I believe that tomorrow is another day and I believe in miracles.`,
       date: 'November 5, 2021',
       likes: 12,
-      comments: 4,
+      code: 'ZARA42524',
       timestamp: '11h ago'
     },
     {
@@ -23,7 +23,7 @@ export class ProfilePage implements OnInit {
       text: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
       date: 'October 23, 2021',
       likes: 30,
-      comments: 64,
+      code: 'EXIST02020',
       timestamp: '30d ago'
     },
     {
@@ -32,7 +32,7 @@ export class ProfilePage implements OnInit {
       likes: 46,
       text: `Hope is the thing with feathers that perches in the soul
              and sings the tune without the words And never stops at all.`,
-      comments: 66,
+      code: 'ZEN5452',
       timestamp: '4mo ago'
     },
   ];
@@ -45,7 +45,7 @@ export class ProfilePage implements OnInit {
     following: 1052,
     tweets: 35
   };
-
+  status='notification'
   constructor(private router: Router,) { }
 
   ngOnInit() {
@@ -67,5 +67,11 @@ export class ProfilePage implements OnInit {
   }
   gotoGame(){
     this.router.navigateByUrl('login')
+  }
+  goNotification(){
+this.status='notification'
+  }
+  goForsa(){
+    this.status='forsa'
   }
 }

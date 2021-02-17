@@ -5,20 +5,51 @@ import { HTTP } from '@ionic-native/http/ngx';
   providedIn: 'root'
 })
 export class ManagementService {
-  urlGlobal="http://vps-b56f4fee.vps.ovh.net"
+  urlGlobal="https://shop.lunura.com"
   listOffre
+  listProvider
+  Offre
+  idOffre
   constructor(private httpClient: HttpClient,
               private nativeHttp: HTTP,) { }
 
-                get_list_produit(){
+                get_list_provider(){
                   this.nativeHttp.get(this.urlGlobal+"/api/provider",{},{}).then(
                       result => {
                         var u_data = JSON.parse(result.data);
-                        this.listOffre=u_data
-                        alert(this.listOffre);
+                        this.listProvider=u_data
+                       alert("provider: "+JSON.stringify(this.listProvider));
                           },
                          err => {
                           alert('err '+JSON.stringify(err));
                         })
+                }
+
+
+                
+                get_list_produit(){
+                  this.nativeHttp.get(this.urlGlobal+"/api/offer",{},{}).then(
+                      result => {
+                        var u_data = JSON.parse(result.data);
+                        this.listOffre=u_data
+                        //  alert("liste offer:  "+JSON.stringify(this.listOffre));
+                          },
+                         err => {
+                          alert('err '+JSON.stringify(err));
+                        })
+                }
+
+                get_produit(){
+                  // alert("id offre service  "+this.idOffre);
+
+                  this.nativeHttp.get(this.urlGlobal+"/api/offer/"+this.idOffre,{},{}).then(
+                    result => {
+                      var u_data = JSON.parse(result.data);
+                      this.Offre=u_data
+                       alert("offer:  "+JSON.stringify(this.Offre));
+                        },
+                       err => {
+                        alert('err '+JSON.stringify(err));
+                      })
                 }
 }

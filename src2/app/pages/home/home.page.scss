@@ -1,0 +1,31 @@
+
+.logo-img{
+  display: block;
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+ion-segment-button {
+  background-color:  rgb(239, 239, 255);;
+}
+ion-grid{
+  background-color: rgb(239, 239, 255);
+  ion-col{
+    background-color: rgb(255, 255, 255);
+  }
+  p{
+    font-size: 10px;
+    text-align: center;
+  }
+  .pa{
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+.categorie{
+  img{
+    height: 29px;
+  }
+}
+

@@ -1,6 +1,11 @@
 <ion-header [translucent]="true">
 <ion-toolbar>
-  <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
+  <div>
+      <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
+<span class="fav"><ion-icon (click)="gofav()" style="font-size:40px"  name="heart-outline"></ion-icon></span>
+<!-- <span class="filtre"><ion-icon  name="filter-circle-outline"></ion-icon></span> -->
+<span class="filtre"><img style="font-size:40px" src="../../assets/home/filter.svg"></span>
+</div>
 
 </ion-toolbar>
 </ion-header>
@@ -8,14 +13,14 @@
 <ion-content [fullscreen]="true">
 
   <ion-grid>
-    <ion-slides  [options]="config">
-      <ion-slide>
+    <ion-slides style="width: 100%; height: 100%;" [options]="config" pager>
+      <ion-slide style="width: 150%; height: 100%;">
         <img class="logo-img" src="../../assets/Home.jpg">
       </ion-slide>
-      <ion-slide>
+      <ion-slide style="width: 150%;height: 100%;">
         <img class="logo-img" src="../../assets/Home.jpg">
       </ion-slide>
-      <ion-slide>
+      <ion-slide style="width: 150%;height: 100%;">
         <img class="logo-img" src="../../assets/Home.jpg">
       </ion-slide>
     </ion-slides>
@@ -23,10 +28,10 @@
 
   <div>
     <ion-segment>
-      <ion-slides class="categorie">
+      <ion-slides class="categorie" >
         <ion-slide>
       <ion-segment-button (click)="goCategorie()">
-        <img src="../../../assets/categorie/categories.svg">
+        <img  src="../../../assets/categorie/categories.svg">
         <ion-label>Categorie</ion-label>
       </ion-segment-button>
       <ion-segment-button (click)="go_Vetement()">
@@ -34,7 +39,7 @@
         <ion-label>	Vêtements </ion-label>
       </ion-segment-button>
       <ion-segment-button (click)="go_Maison()">
-        <img src="../../../assets/categorie/electronics.svg">
+        <img src="../../../assets/categorie/cpu.svg">
         <ion-label>High-tech</ion-label>
       </ion-segment-button>
       <ion-segment-button (click)="go_Electronique()">
@@ -44,7 +49,7 @@
     </ion-slide>
     <ion-slide>
       <ion-segment-button (click)="go_Electronique()">
-        <img src="../../../assets/categorie/tray.svg">
+        <img src="../../../assets/categorie/food.svg">
         <ion-label>Restauration</ion-label>
       </ion-segment-button>
       <ion-segment-button (click)="go_Electronique()">
@@ -57,7 +62,7 @@
       </ion-segment-button>
  
        <ion-segment-button (click)="go_Electronique()">
-        <img src="../../../assets/categorie/balloons.svg">
+        <img src="../../../assets/categorie/shelves.svg">
         <ion-label>Déco</ion-label>
       </ion-segment-button>
     </ion-slide>
@@ -71,7 +76,7 @@
         <ion-label>Accessoires</ion-label>
       </ion-segment-button>
       <ion-segment-button (click)="go_Electronique()">
-        <img src="../../../assets/categorie/support.svg">
+        <img src="../../../assets/categorie/customer.svg">
         <ion-label>Service </ion-label>
       </ion-segment-button>
     </ion-slide>
@@ -79,39 +84,86 @@
   </ion-segment>
   </div>
 <ion-grid>
-  <span>Nos Collections</span>
+  <!-- <span>Nos Collections</span> -->
 </ion-grid>
 
   <!-- <img class="logo-img" src="../../assets/home/annonce.png"> -->
  
 <ion-grid>
  <ion-row>
-   <ion-col col-6>
-    <img src="../../../assets/article/pc1.jpg">
-    <p>vega book Plus ...</p>
-    <p class="pa">602.50 TND</p>
+   <ion-col col-6  *ngFor="let list of managementService.listOffre; let i = index">
+  <div *ngIf="list.priority==1">
+    <div (click)=" OffreDetails(i)">
+    <img style="height: 80px;width: 100px;"  [src] ="list.image" >
+    <p>{{list.title}}</p>
+    <p class="pa">{{list.price_after}}</p>
+  </div>
+  </div>
    </ion-col>
-   <ion-col col-6>
-    <img src="../../../assets/article/pc1.jpg">
-    <p>vega book Plus ...</p>
-    <p class="pa">602.50 TND</p>
-  </ion-col>
+
  </ion-row>
 </ion-grid>
 <!-- <ion-button (click)="getListeProduit()">getListeProduit</ion-button> -->
-<ion-grid>
+<!-- <ion-grid>
   <ion-row style="background-color: red;">
   <p style="color: white; font-size: 19px;">  Offre special </p>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;
   <p  style="color: white; font-size: 19px;"  id="demo"></p>
+  </ion-row>
+</ion-grid> -->
+
+<!-- <ion-grid>
+
+  <ion-col size="6" *ngFor="let card of managementService.listOffre ; let i = index">
+  <ion-card  class="item-ribbon shadowcard"  >
+   
+      <span class="ribbon javascript">
+        <span>{{card.percentage}} %</span>
+      </span>
+      <img style="width: 200px; height: 150px;" [src]="card.image"(click)=" OffreDetails(i)"/>
+      <div class="card-coupon">  <img src='../../../assets/article/seal2.png'> <p>200 <br>Forsa</p></div>
+      <div class="card-fav" ><ion-icon (click)="fav(card)" *ngIf="favorie==0" name="heart-outline"></ion-icon><ion-icon (click)="notfav(card)" style="color: #f53d3d;" *ngIf="favorie==1" name="heart"></ion-icon></div>
+      <div class="card-badge"><ion-badge color="danger">66</ion-badge></div>
+  <div style="background-color: #b4d7ff;">
+    <div class="card-title">{{card.title}}</div>
+    <div class="card-subtitle">{{card.description}}</div>
+    <div class="card-prix">{{card.price_after}} TND</div>
+  </div>
+    
+
+   
+   
+  </ion-card>
+</ion-col >
+
+</ion-grid> -->
+
+<ion-grid>  
+  <ion-row>
+    <ion-col size="6" *ngFor="let card of managementService.listOffre ; let i = index">
+      <ion-card  class="item-ribbon shadowcard"  >
+   
+        <span class="ribbon javascript">
+          <span>{{card.percentage}} %</span>
+        </span>
+        <img style="width: 300px; height: 150px;" [src]="card.image"(click)=" OffreDetails(i)"/>
+        <div class="card-coupon">  <img src='../../../assets/article/seal2.png'> <p style=" font-size: 0.7em;">20 <br>Forsa</p></div>
+        <div class="card-fav" ><ion-icon (click)="fav(card)" *ngIf="favorie==0" name="heart-outline"></ion-icon><ion-icon (click)="notfav(card)" style="color: #f53d3d;" *ngIf="favorie==1" name="heart"></ion-icon></div>
+        <div class="card-badge"><ion-badge color="danger">66</ion-badge></div>
+    <div style="background-color: #b4d7ff;">
+      <div class="card-title">{{card.title}}</div>
+      <div class="card-subtitle">{{card.description}}</div>
+      <div class="card-prix">{{card.price_after}} TND</div>
+    </div> 
+    </ion-card>
+    </ion-col>
   </ion-row>
 </ion-grid>
 
-<ion-grid>
+<!-- <ion-grid>
   <ion-row>
     <ion-col col-3>
      <img src="../../../assets/article/pc1.jpg">
@@ -156,7 +208,7 @@
     <p class="pa">602.50 TND</p>
    </ion-col>
   </ion-row>
- </ion-grid>
+ </ion-grid> -->
  <ion-grid>
   <ion-slides pager>
     <ion-slide>
@@ -171,8 +223,23 @@
   </ion-slides>
 </ion-grid>
 <ion-grid>
-  <ion-row>
-    <ion-col col-6>
+  <ion-row >
+    <ion-col col-6 *ngFor="let list of managementService.listOffre" >
+     <img src="../../../assets/article/pc1.jpg">
+     <p>{{list.title}}</p>
+     <p class="pa">{{list.price_after}}</p>
+    </ion-col>
+    <!-- <ion-col col-6>
+     <img src="../../../assets/article/pc1.jpg">
+     <p>vega book Plus ...</p>
+     <p class="pa">602.50 TND</p>
+   </ion-col> -->
+  </ion-row>
+ </ion-grid>
+
+ <ion-grid>
+  <ion-row >
+    <ion-col col-6 >
      <img src="../../../assets/article/pc1.jpg">
      <p>vega book Plus ...</p>
      <p class="pa">602.50 TND</p>

@@ -37,6 +37,14 @@ const routes: Routes = [
         path: 'interest',
         loadChildren: () => import('../../pages/interest/interest.module').then( m => m.InterestPageModule)
       },
+      {
+        path: 'article',
+        loadChildren: () => import('../../pages/article/article.module').then( m => m.ArticlePageModule)
+      },
+      {
+        path: 'favorie',
+        loadChildren: () => import('../../pages/favorie/favorie.module').then( m => m.FavoriePageModule)
+      }
     ]
   },
   {
