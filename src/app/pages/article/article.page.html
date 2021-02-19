@@ -62,13 +62,13 @@
       <h5>Jusqu'au</h5>
       <h5  id="demo"></h5>
     </div>
-    <div>
+    <div *ngIf="managementService.Offre.promo">
       <h5>coupon_code</h5>
-      <!-- <h5  >{{managementService.Offre.promo.coupon_code}}</h5> -->
+      <h5  >{{managementService.Offre.promo.coupon_code}}</h5>
     </div>
-    <div>
+    <div *ngIf="managementService.Offre.promo">
       <h5>discount</h5>
-      <!-- <h5  >{{managementService.Offre.promo.discount}}</h5> -->
+      <h5  >{{managementService.Offre.promo.discount}}</h5>
     </div>
     <!-- <div>
       <h6>

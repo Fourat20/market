@@ -19,7 +19,8 @@ export class FavoriePage implements OnInit {
 
   getFav(){
     this.storage.get("favorie").then((res) => {
-       console.log("The session TOKEN value is " + res);
+      this.favorieArr=res
+       alert("The session TOKEN value is " +JSON.stringify(res) );
 
 
     });

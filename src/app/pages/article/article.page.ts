@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import { ManagementService } from 'src/app/services/management.service/management.service';
 
 @Component({
@@ -14,22 +15,29 @@ export class ArticlePage implements OnInit {
   page='Information'
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private managementService:ManagementService) {
+              private managementService:ManagementService,
+              public platform: Platform,) {
 this.route.queryParams.subscribe(params=>{
   this.offre_id=params.id
   // alert(params.id)
-  alert(JSON.stringify(this.managementService.Offre))
-  alert(this.offre_id)
+  // alert(this.offre_id)
 //  alert("managementService"+this.managementService.listOffre);
 //  alert("this.listOffre  " +this.offre_id);
 this.managementService.idOffre=params.id
 this.managementService.get_produit()
 this.managementService.get_list_provider()
 this.managementService.get_list_produit()
+alert("Offre promo:  "+JSON.stringify(this.managementService.Offre.promo))
+console.log("Offre promo:  "+JSON.stringify(this.managementService.Offre.promo))
 
 })
 
+// this.platform.backButton.subscribeWithPriority(0, () => {
+//   // code that is executed when the user pressed the back button
+//   // and ionic doesn't already know what to do (close modals etc...)
 
+//   console.log(platform.backButton)
+// })
 // alert(this.id)
 
    }
@@ -37,8 +45,10 @@ this.managementService.get_list_produit()
 
   async ngOnInit() {
     // await this.managementService.get_produit()
-   
+    alert("Offre promo:  "+JSON.stringify(this.managementService.Offre.promo))
+    console.log("Offre promo:  "+JSON.stringify(this.managementService.Offre.promo))
     
+ 
     // alert("this "+JSON.stringify(this.idOffre));
   //  await this.managementService.get_list_produit();
   //  await  this.get_produit_by_id()
