@@ -87,15 +87,15 @@
 <ion-grid>
   <!-- <span>Nos Collections</span> -->
   <div>
-    <!-- {{result}}
-    {{result2}} -->
+     
+  <!--  {{result2}} -->
     <ion-grid *ngIf="result">
       <ion-row>
-        <ion-col  col-6  *ngFor="let list of result; let i = index">
+        <ion-col  col-6  *ngFor="let list of result">
        <div >
          <div >
          <img style="height: 80px;width: 100px;"  [src] ="list.logo" >
-         <p>{{list.title}}</p>
+         <p>{{list.name}}</p>
          <p class="pa">{{list.location}}</p>
        </div>
        </div>
@@ -103,6 +103,7 @@
      
       </ion-row>
      </ion-grid>
+     {{result}}
 <!-- search result -->
     <!-- <ion-grid *ngIf="result2">  
       <ion-row>
