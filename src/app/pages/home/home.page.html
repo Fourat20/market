@@ -1,7 +1,8 @@
 <ion-header [translucent]="true">
 <ion-toolbar>
   <div>
-      <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
+      <ion-searchbar style="display: block;
+      padding-right: 105px;" showCancelButton="focus"  (keyup)="onSearchChange($event)"></ion-searchbar>
 <span class="fav"><ion-icon (click)="gofav()" style="font-size:40px"  name="heart-outline"></ion-icon></span>
 <!-- <span class="filtre"><ion-icon  name="filter-circle-outline"></ion-icon></span> -->
 <span class="filtre"><img style="font-size:40px" src="../../assets/home/filter.svg"></span>
@@ -34,48 +35,48 @@
         <img  src="../../../assets/categorie/categories.svg">
         <ion-label>Categorie</ion-label>
       </ion-segment-button>
-      <ion-segment-button (click)="go_Vetement()">
+      <ion-segment-button (click)="goCategorie()">
         <img src="../../../assets/categorie/fashion.svg">
         <ion-label>	Vêtements </ion-label>
       </ion-segment-button>
-      <ion-segment-button (click)="go_Maison()">
+      <ion-segment-button (click)="goCategorie()">
         <img src="../../../assets/categorie/cpu.svg">
         <ion-label>High-tech</ion-label>
       </ion-segment-button>
-      <ion-segment-button (click)="go_Electronique()">
+      <ion-segment-button (click)="goCategorie()">
         <img src="../../../assets/categorie/cosmetics.svg">
         <ion-label>Beauté</ion-label>
       </ion-segment-button>
     </ion-slide>
     <ion-slide>
-      <ion-segment-button (click)="go_Electronique()">
+      <ion-segment-button (click)="goCategorie()">
         <img src="../../../assets/categorie/food.svg">
         <ion-label>Restauration</ion-label>
       </ion-segment-button>
-      <ion-segment-button (click)="go_Electronique()">
+      <ion-segment-button (click)="goCategorie()">
         <img src="../../../assets/categorie/market.svg">
         <ion-label>Marché</ion-label>
       </ion-segment-button>
-      <ion-segment-button (click)="go_Electronique()">
+      <ion-segment-button (click)="go_ElectrgoCategorieonique()">
         <img src="../../../assets/categorie/car.svg">
         <ion-label>Automobile</ion-label>
       </ion-segment-button>
  
-       <ion-segment-button (click)="go_Electronique()">
+       <ion-segment-button (click)="goCategorie()">
         <img src="../../../assets/categorie/shelves.svg">
         <ion-label>Déco</ion-label>
       </ion-segment-button>
     </ion-slide>
     <ion-slide>
-     <ion-segment-button (click)="go_Electronique()">
+     <ion-segment-button (click)="goCategorie()">
       <img src="../../../assets/categorie/bike.svg">
         <ion-label>Loisir</ion-label>
       </ion-segment-button>
-      <ion-segment-button (click)="go_Electronique()">
+      <ion-segment-button (click)="goCategorie()">
         <img src="../../../assets/categorie/necklace.svg">
         <ion-label>Accessoires</ion-label>
       </ion-segment-button>
-      <ion-segment-button (click)="go_Electronique()">
+      <ion-segment-button (click)="goCategorie()">
         <img src="../../../assets/categorie/customer.svg">
         <ion-label>Service </ion-label>
       </ion-segment-button>
@@ -85,6 +86,46 @@
   </div>
 <ion-grid>
   <!-- <span>Nos Collections</span> -->
+  <div>
+    <!-- {{result}}
+    {{result2}} -->
+    <ion-grid *ngIf="result">
+      <ion-row>
+        <ion-col  col-6  *ngFor="let list of result; let i = index">
+       <div >
+         <div >
+         <img style="height: 80px;width: 100px;"  [src] ="list.logo" >
+         <p>{{list.title}}</p>
+         <p class="pa">{{list.location}}</p>
+       </div>
+       </div>
+        </ion-col>
+     
+      </ion-row>
+     </ion-grid>
+<!-- search result -->
+    <!-- <ion-grid *ngIf="result2">  
+      <ion-row>
+        <ion-col class="classcol" size="6" *ngFor="let card of result2 ; let i = index">
+          <ion-card  class="item-ribbon shadowcard"  >
+       
+            <span class="ribbon javascript">
+              <span>{{card.percentage}} %</span>
+            </span>
+            <img style="width: 300px; height: 150px;" [src]="card.image"(click)=" OffreDetails(i)"/>
+            <div class="card-coupon">  <img src='../../../assets/article/seal2.png'> <p style=" font-size: 0.7em;">20 <br>win</p></div>
+            <div class="card-fav" ><ion-icon (click)="fav(card)" *ngIf="favorie==0" name="heart-outline"></ion-icon><ion-icon (click)="notfav(card)" style="color: #f53d3d;" *ngIf="favorie==1" name="heart"></ion-icon></div>
+            <div class="card-badge"><ion-badge color="danger">66</ion-badge></div>
+        <div style="background-color: #ff9e66;">
+          <div class="card-title">{{card.title}}</div>
+          <div class="card-subtitle">{{card.description}}</div>
+          <div class="card-prix">{{card.price_after}} TND</div>
+        </div> 
+        </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+</div>
 </ion-grid>
 
   <!-- <img class="logo-img" src="../../assets/home/annonce.png"> -->
@@ -143,20 +184,20 @@
 
 <ion-grid>  
   <ion-row>
-    <ion-col size="6" *ngFor="let card of managementService.listOffre ; let i = index">
+    <ion-col class="classcol" size="6" *ngFor="let card of managementService.listOffre ; let i = index">
       <ion-card  class="item-ribbon shadowcard"  >
    
         <span class="ribbon javascript">
           <span>{{card.percentage}} %</span>
         </span>
         <img style="width: 300px; height: 150px;" [src]="card.image"(click)=" OffreDetails(i)"/>
-        <div class="card-coupon">  <img src='../../../assets/article/seal2.png'> <p style=" font-size: 0.7em;">20 <br>win</p></div>
+        <div class="card-coupon">  <img class="couponimg" src='../../../assets/article/seal2.png'> <p style=" font-size: 0.7em;">20 <br>win</p></div>
         <div class="card-fav" ><ion-icon (click)="fav(card)" *ngIf="favorie==0" name="heart-outline"></ion-icon><ion-icon (click)="notfav(card)" style="color: #f53d3d;" *ngIf="favorie==1" name="heart"></ion-icon></div>
         <div class="card-badge"><ion-badge color="danger">66</ion-badge></div>
-    <div style="background-color: #b4d7ff;">
+    <div style="background-color: #fff1cb;">
       <div class="card-title">{{card.title}}</div>
       <div class="card-subtitle">{{card.description}}</div>
-      <div class="card-prix">{{card.price_after}} TND</div>
+      <div class="card-prix"><p style="text-align: left; font-size: 1.2em;">{{card.price_after}} TND</p></div>
     </div> 
     </ion-card>
     </ion-col>
@@ -237,7 +278,7 @@
   </ion-row>
  </ion-grid>
 
- <ion-grid>
+ <!-- <ion-grid>
   <ion-row >
     <ion-col col-6 >
      <img src="../../../assets/article/pc1.jpg">
@@ -250,9 +291,9 @@
      <p class="pa">602.50 TND</p>
    </ion-col>
   </ion-row>
- </ion-grid>
+ </ion-grid> -->
 
- <ion-grid>
+ <!-- <ion-grid>
   <ion-row>
     <ion-col col-3>
      <img src="../../../assets/article/pc1.jpg">
@@ -297,7 +338,7 @@
     <p class="pa">602.50 TND</p>
    </ion-col>
   </ion-row>
- </ion-grid>
+ </ion-grid> -->
 
  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button color="danger" (click)="goGame()">

@@ -13,9 +13,9 @@ ion-segment-button {
 // }
 ion-grid{
   background-color: rgb(239, 239, 255);
-  ion-col{
-    background-color: rgb(255, 255, 255);
-  }
+  // ion-col{
+  //   background-color: rgb(255, 255, 255);
+  // }
   p{
     font-size: 10px;
     text-align: center;
@@ -34,19 +34,18 @@ ion-grid{
   }
 }
 .fav{
-  // background-color: yellow;
   margin-right: 20px;
   display: block;
-  margin-top: -50px;
+  margin-top: -44px;
   float: right;
   width: 30px;
 }
 
 .filtre{
   // background-color: yellow;
-  margin-right: 55px;
+  margin-right: 58px;
   display: block;
-  margin-top: -50px;
+  margin-top: -39px;
   float: right;
   width: 30px;
 }
@@ -58,6 +57,7 @@ ion-card {
   position: relative;
   text-align: center;
   filter : brightness(80%);
+  background-color: rgb(255, 249, 246);
   
 }
 .card-title {
@@ -82,7 +82,7 @@ ion-card {
 .card-badge{
   position: absolute;
   right:80%;
-  top: 58%;
+  top: 54%;
 }
 .card-fav{
   position: absolute;
@@ -95,6 +95,9 @@ ion-card {
 ion-icon{
   width: 40px;
   height: 40px;
+}
+ion-label{
+  font-size: 0.8em;
 }
 .card-coupon{
   position: absolute;
@@ -113,7 +116,9 @@ ion-icon{
     color: rgb(0, 0, 0);
     text-align: center;
   }
-
+.couponimg{
+ font-size: 70px;
+}
   // img:hover{
   
    
@@ -122,12 +127,12 @@ ion-icon{
   // }
 }
 .card-prix{
-  font-size: 1.2em;
+  // font-size: 1.2em;
   position: relative;
   top: 80%;
-  left: 68%;
-  width: 100%;
-  text-align: left;
+  // left: 68%;
+  // width: 100%;
+  // text-align: left;
   color: rgb(255, 0, 8);
 }
 
@@ -136,6 +141,10 @@ ion-icon{
   box-shadow: 6px 6px 6px black;
 }
 
+ion-searchbar{
+  display: flex;
+
+}
 
 
 
@@ -230,4 +239,18 @@ $javascript: #f7e023;
 
 .ribbon.javascript {
   @include ribbonize($javascript, black);
+}
+
+.classcol:nth-child(odd){
+  margin-top: 25px;
+  padding: 0px;
+  height: 50%;
+  // background-color: red;
+}
+.classcol{
+  margin-top: 0px;
+  padding: 0px;
+  height: 50%;
+
+  // background-color: red;
 }

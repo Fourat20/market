@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
+import { Storage } from "@ionic/storage";
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,9 +14,13 @@ export class AuthService {
   name
   email
   password
+  profileData
 
-  constructor(private httpClient: HttpClient,
-              private nativeHttp: HTTP,) { }
+  constructor(private router: Router,
+              private httpClient: HttpClient,
+              private nativeHttp: HTTP,
+              private storage: Storage,
+              private googlePlus: GooglePlus,) { }
 
 signup(){
   let postData = {
@@ -52,13 +60,26 @@ headers= {
     .post(this.urlGlobal+"/api/user/login",postData,headers)
     .then(async (data) => {
       var u_data = JSON.parse(data.data);
-      alert('AccessToken: '+ u_data.token)
+      // alert('AccessToken: '+ u_data.token)
       this.AccessToken= u_data.token
+      this.storage.set("AccessToken", this.AccessToken);
     })
     .catch((error) => {
       alert("err token: "+JSON.stringify (error))
     });
 
 
+}
+
+LoginGoogle(){
+  this.googlePlus.login({})
+  .then(res => {
+    alert(JSON.stringify(res))
+    this.profileData=res
+ this.AccessToken=res.accessToken
+ this.router.navigateByUrl('tabs/tabs/home')
+  }
+  )
+  .catch(err => console.error(err));
 }
 }

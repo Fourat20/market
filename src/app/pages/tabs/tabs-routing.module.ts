@@ -44,6 +44,10 @@ const routes: Routes = [
       {
         path: 'favorie',
         loadChildren: () => import('../../pages/favorie/favorie.module').then( m => m.FavoriePageModule)
+      },
+      {
+        path: 'search',
+        loadChildren: () => import('../../pages/search/search.module').then( m => m.SearchPageModule)
       }
     ]
   },

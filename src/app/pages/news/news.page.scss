@@ -37,7 +37,7 @@ ion-grid{
   // background-color: yellow;
   margin-right: 20px;
   display: block;
-  margin-top: -50px;
+  margin-top: -44px;
   float: right;
   width: 30px;
 }
@@ -82,7 +82,7 @@ ion-card {
 .card-badge{
   position: absolute;
   right:80%;
-  top: 58%;
+  top: 54%;
 }
 .card-fav{
   position: absolute;
@@ -113,7 +113,9 @@ ion-icon{
     color: rgb(0, 0, 0);
     text-align: center;
   }
-
+  .couponimg{
+    font-size: 70px;
+   }
   // img:hover{
   
    
@@ -230,4 +232,18 @@ $javascript: #f7e023;
 
 .ribbon.javascript {
   @include ribbonize($javascript, black);
+}
+
+.classcol:nth-child(odd){
+  margin-top: 25px;
+  padding: 0px;
+  height: 50%;
+  // background-color: red;
+}
+.classcol{
+  margin-top: 0px;
+  padding: 0px;
+  height: 50%;
+
+  // background-color: red;
 }

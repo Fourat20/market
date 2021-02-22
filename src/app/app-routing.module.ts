@@ -36,6 +36,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/pub/pub.module').then( m => m.PubPageModule)
   }
 
+
 ];
 
 @NgModule({

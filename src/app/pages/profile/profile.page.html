@@ -5,10 +5,10 @@
     </ion-toolbar>
   </ion-header> -->
   <div class="card-profile">
-    <div class="card-profile_visual">  <img src="../../../assets/profile/profile.jpeg"></div>
+    <div class="card-profile_visual">  <img  [src] ="auth.profileData.imageUrl"></div>
     <div class="card-profile_user-infos">
-      <span class="infos_name">{{user.name}}</span>
-      <span class="infos_nick">{{user.twitter}}</span>
+      <span class="infos_name">{{auth.profileData.displayName}}{{auth.profileData.familyName}}</span>
+      <span class="infos_nick">{{auth.profileData.email}}</span>
     <div class="iconedit"> <ion-icon  name="create-outline"></ion-icon> </div>
     </div>
 

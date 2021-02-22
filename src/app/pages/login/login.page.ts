@@ -27,17 +27,16 @@ export class LoginPage implements OnInit {
     this.auth.email=this.email
     this.auth.password=this.password
 this.auth.login()
-    this.router.navigateByUrl('tabs/tabs/home')
+if(this.auth.AccessToken){ 
+  this.router.navigateByUrl('tabs/tabs/home')
+}else{
+  alert("err email or password")
+}
   }
 
   LoginGoogle(){
-    this.googlePlus.login({})
-    .then(res => {
-      alert(res)
-    this.router.navigateByUrl('tabs/tabs/home')
-    }
-    )
-    .catch(err => console.error(err));
+this.auth.LoginGoogle()
+
   }
   Loginfacebook(){
   //   this.fb.login(['public_profile', 'user_friends', 'email'])

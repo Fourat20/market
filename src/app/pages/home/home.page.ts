@@ -15,7 +15,11 @@ buttonName = "NEXT";
 selectedSlide: any;
 slideOpts={slidesPerView:1,};
 favorie=0
+offset=0
+result
+result2
 favorieArr=[]
+favorieArrGet=[]
 cards=[
   {
     'image':'../../assets/article/bracelet.jpg',
@@ -39,6 +43,53 @@ cards=[
     'price_after':'5'
   },
 ]
+
+categories=[
+  {
+  'name':'Categorie',
+  'image':'../../../assets/categorie/categories.svg'
+  },
+  {
+    'name':'Vêtements',
+    'image':'../../../assets/categorie/fashion.svg'
+    },
+    {
+      'name':'High-tech',
+      'image':'../../../assets/categorie/cpu.svg'
+      },
+      {
+        'name':'Beauté',
+        'image':'../../../assets/categorie/cosmetics.svg'
+        },
+        {
+          'name':'Restauration',
+          'image':'../../../assets/categorie/food.svg'
+          },
+          {
+            'name':'Marché',
+            'image':'../../../assets/categorie/market.svg'
+            },
+            {
+              'name':'Automobile',
+              'image':'../../../assets/categorie/car.svg'
+              },
+              {
+                'name':'Déco',
+                'image':'../../../assets/categorie/shelves.svg'
+                },
+                {
+                  'name':'Loisir',
+                  'image':'../../../assets/categorie/bike.svg'
+                  },
+                  {
+                    'name':'Accessoires',
+                    'image':'../../../assets/categorie/necklace.svg'
+                    },
+                    {
+                      'name':'Service',
+                      'image':'../../../assets/categorie/customer.svg'
+                      },
+]
   constructor(private router: Router,
               public platform: Platform,
               private auth: AuthService,
@@ -49,7 +100,15 @@ cards=[
                 })
                 this.countDown()
 
-                 this.managementService.get_list_produit()
+              
+                 this.managementService.get_list_provider()
+
+                 if( !this.auth.AccessToken){
+                  this.router.navigateByUrl('login')
+                 }
+                 this.getFav()
+                 this.postFav()
+                
               }
               config={
                 spaceBetween:10,
@@ -91,8 +150,44 @@ this.router.navigate(['/tabs/tabs/article'],id)
     })
   }
   goCategorie(){
+    // let id:NavigationExtras={
+    //   queryParams:{
+    //     id:this.managementService.listOffre[i]._id
+    //   }
+    // }
+    // console.log("this.managementService.listOffre[i]._id "+this.managementService.listOffre[i]._id)
     this.router.navigateByUrl('tabs/tabs/categorie')
   }
+  getFav(){
+    this.storage.get("favorie").then((res) => {
+      this.favorieArrGet=res
+       alert("favorieArrGet " +JSON.stringify(res) );
+    });
+  }
+
+
+  async postFav(){
+  await this.managementService.get_list_produit()
+  await this.getFav()
+  
+  for(let i=0; this.managementService.listOffre.length ;i++)
+{
+  for(let j=0;this.favorieArrGet.length;j++){
+    if(this.managementService.listOffre[i]==this.favorieArrGet[j])
+    {
+      this.managementService.listOffre[i].fav=1
+    }else
+    {
+      this.managementService.listOffre[i].fav=0
+    }
+  }
+ 
+  alert("new listOffre   "+this.managementService.listOffre[i].fav)
+}
+
+}
+
+
   goGame(){
     this.router.navigateByUrl('tabs/tabs/game')
   }
@@ -106,7 +201,7 @@ this.router.navigate(['/tabs/tabs/article'],id)
     this.favorie=1
      this.favorieArr.push(card)
     this.storage.set("favorie", this.favorieArr);
-
+alert("this.favorieArr " +this.favorieArr)
   }
   notfav(card){
     this.favorie=0
@@ -151,5 +246,57 @@ this.router.navigate(['/tabs/tabs/article'],id)
       document.getElementById("demo").innerHTML = "EXPIRED";
     }
   }, 1000);
+  }
+
+
+  onSearchChange(event){
+
+    // console.log("this.managementService.listProvider: "+this.managementService.listProvider);
+    
+    let  search_key =  event.target.value
+    this.result = ""
+
+  // console.log( this.provider_res) ;
+//  Search an element right Now
+  for(var i = 0; i < this.managementService.listProvider.length; i++)
+  {
+
+    // console.log("Read an element ")
+    // console.log(this.provider_res[i])
+
+    // @ts-ignore
+    if(this.managementService.listProvider[i].name === search_key){
+      console.log(this.managementService.listProvider[i])
+        this.result = JSON.stringify(this.managementService.listProvider[i])
+        console.log( this.result)
+        // this.router.navigateByUrl('/tabs/tabs/search')
+    }
+    // if(restaurants[i].restaurant.food == 'chicken')
+    // {
+    //   return restaurants[i].restaurant.name;
+    // }
+
+
+  }
+
+
+      // console.log("this.managementService.listProvider: "+this.managementService.listProvider);
+    
+    //   let  search_key2 =  event.target.value
+    //   this.result2 = ""
+  
+    // for(var i = 0; i < this.managementService.listOffre.length; i++)
+    // {
+  
+    
+    //   if(this.managementService.listOffre[i].title === search_key2){
+    //     console.log(this.managementService.listOffre[i])
+    //       this.result2 = JSON.stringify(this.managementService.listOffre[i])
+    //       console.log("offre    "+ this.result2)
+    //   }
+
+  
+  
+    // }
   }
 }

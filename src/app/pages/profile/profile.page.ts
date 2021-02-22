@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -46,7 +47,10 @@ export class ProfilePage implements OnInit {
     tweets: 35
   };
   status='notification'
-  constructor(private router: Router,) { }
+  constructor(private router: Router,
+              private auth: AuthService,) { 
+             alert("profile data "+ this.auth.profileData)  
+              }
 
   ngOnInit() {
   }
