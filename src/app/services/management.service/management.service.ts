@@ -35,6 +35,8 @@ export class ManagementService {
                         var u_data = JSON.parse(result.data);
                         this.listOffre=u_data
                         //  alert("liste offer:  "+JSON.stringify(this.listOffre));
+                        console.log("liste offer from service:  "+JSON.stringify(this.listOffre));
+                        
                           },
                          err => {
                           alert('err '+JSON.stringify(err));

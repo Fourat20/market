@@ -106,7 +106,7 @@ categories=[
                  if( !this.auth.AccessToken){
                   this.router.navigateByUrl('login')
                  }
-                 this.getFav()
+                //  this.getFav()
                  this.postFav()
                 
               }
@@ -161,33 +161,41 @@ this.router.navigate(['/tabs/tabs/article'],id)
   getFav(){
     this.storage.get("favorie").then((res) => {
       this.favorieArrGet=res
-       alert("favorieArrGet " +JSON.stringify(res) );
+       console.log("favorieArrGet " +JSON.stringify(res) );
     });
   }
 
 
   async postFav(){
-  await this.managementService.get_list_produit()
-  await this.getFav()
-  
-  for(let i=0; this.managementService.listOffre.length ;i++)
+   this.managementService.get_list_produit()
+   this.getFav()
+   await this.delay(2000)
+  for(let i=0; this.favorieArrGet.length ;i++)
 {
-  for(let j=0;this.favorieArrGet.length;j++){
+  console.log("from first for"+this.favorieArrGet.length);
+  
+  for(let j=0;this.managementService.listOffre.length;j++){
+    console.log("from second for");
     if(this.managementService.listOffre[i]==this.favorieArrGet[j])
     {
+      console.log("if");
       this.managementService.listOffre[i].fav=1
     }else
     {
+      console.log("else");
       this.managementService.listOffre[i].fav=0
     }
   }
  
   alert("new listOffre   "+this.managementService.listOffre[i].fav)
+  console.log("new listOffre:  "+this.managementService.listOffre[i].fav);
 }
 
 }
 
-
+delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
   goGame(){
     this.router.navigateByUrl('tabs/tabs/game')
   }
