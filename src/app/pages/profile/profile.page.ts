@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service/auth.service';
+import { ManagementService } from 'src/app/services/management.service/management.service';
 
 @Component({
   selector: 'app-profile',
@@ -48,7 +49,8 @@ export class ProfilePage implements OnInit {
   };
   status='notification'
   constructor(private router: Router,
-              private auth: AuthService,) { 
+              private auth: AuthService,
+              private managementService:ManagementService) { 
              alert("profile data "+ this.auth.profileData)  
               }
 
@@ -71,6 +73,12 @@ export class ProfilePage implements OnInit {
   }
   gotoGame(){
     this.router.navigateByUrl('login')
+  }
+  goEditProfile(){
+    this.router.navigateByUrl('tabs/tabs/edit-profile')
+  }
+  goInterest(){
+    this.router.navigateByUrl('tabs/tabs/interest')
   }
   goNotification(){
 this.status='notification'

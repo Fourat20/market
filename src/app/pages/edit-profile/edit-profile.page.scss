@@ -1,0 +1,28 @@
+ion-item {
+    color: black !important;
+    padding-left: 10px !important;
+    margin-bottom: 10px;
+    background-color: transparent !important;
+    font-size: 0.9em;
+  }
+  .login-container {
+    color: white;
+    position: absolute;
+    top: 0;
+    padding: 10vw;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 2;
+  }
+  ::-webkit-input-placeholder {
+    color: white !important;
+  }
+  .transparent{
+    background-color:transparent;
+  }
+  .image{
+      width: 200px;
+      height: 200px;
+      text-align: center;
+  }

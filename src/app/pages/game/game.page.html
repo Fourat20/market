@@ -5,11 +5,17 @@
 </ion-header>
 
 <ion-content>
-<ion-slides pager>
-  <ion-slide *ngFor="let video of items">
-    <ion-card (click)="videomodal(video.url)">
-      <ion-img [src]="video.images" alt="" srcset=""></ion-img>
+<ion-slides pager >
+  <ion-slide *ngFor="let video of managementService.game">
+    <ion-card (click)="videomodal(video.video_link)">
+      <ion-img src="../../assets/game/game.png" alt="" srcset=""></ion-img>
     </ion-card>
   </ion-slide>
 </ion-slides>
+<div *ngIf="managementService.gameViewer.watch_video==1">
+<ion-label>This video is watched</ion-label>
+
+
+  </div>
+
 </ion-content>

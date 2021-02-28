@@ -10,6 +10,11 @@ ion-segment {
 
 .categorie{
   img{
-    height: 29px;
+    height: 45px;
+    border-radius: 30%; 
+    border: 3px blue inset;
   }
+}
+ion-label{
+  font-size: 0.7em;
 }

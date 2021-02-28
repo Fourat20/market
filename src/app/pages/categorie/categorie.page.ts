@@ -12,6 +12,7 @@ export class CategoriePage {
   constructor(private router: Router,
     private managementService:ManagementService) {
       this.get_list_produit()
+      this.managementService.get_category()
     }
 
 
@@ -30,6 +31,38 @@ export class CategoriePage {
 this.router.navigate(['/tabs/tabs/article'],id)
     }
 
+    go_Service(){
+      this.value='Service';
+      console.log(" this.value "+  this.value)
+    }
+    go_Accessoires(){
+      this.value='Accessoires';
+      console.log(" this.value "+  this.value)
+    }
+    go_Loisir(){
+      this.value='Loisir';
+      console.log(" this.value "+  this.value)
+    }
+    go_Deco(){
+      this.value='Deco';
+      console.log(" this.value "+  this.value)
+    }
+    go_Automobile(){
+      this.value='Automobile';
+      console.log(" this.value "+  this.value)
+    }
+    go_Market(){
+      this.value='Market';
+      console.log(" this.value "+  this.value)
+    }
+    go_Restauration(){
+      this.value='Restauration';
+      console.log(" this.value "+  this.value)
+    }
+    go_Beauty(){
+      this.value='Beauty';
+      console.log(" this.value "+  this.value)
+    }
   go_Maison(){
     this.value='Maison';
     console.log(" this.value "+  this.value)
@@ -39,6 +72,8 @@ this.router.navigate(['/tabs/tabs/article'],id)
     console.log(" this.value "+  this.value)
   }
   go_Electronique(){
+    console.log("managementService.category.name  "+this.managementService.category.name);
+    
     this.value='Electronique';
     console.log(" this.value "+  this.value)
   }

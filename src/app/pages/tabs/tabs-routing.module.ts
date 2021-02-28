@@ -48,6 +48,10 @@ const routes: Routes = [
       {
         path: 'search',
         loadChildren: () => import('../../pages/search/search.module').then( m => m.SearchPageModule)
+      },
+      {
+        path: 'edit-profile',
+        loadChildren: () => import('../../pages/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
       }
     ]
   },

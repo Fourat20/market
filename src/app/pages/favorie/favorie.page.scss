@@ -61,7 +61,7 @@
     position: relative;
     top: 80%;
     text-align: left;
-    font-size: 2.0em;
+    font-size:  1.5em;
     width: 100%;
     height: 150%;
     font-weight: bold;
@@ -69,30 +69,30 @@
     // text-shadow: 2px 2px rgb(255, 255, 255);
   }
   .card-subtitle {
-    font-size: 1.2em;
-    position: relative;
-    top: 94%;
-    width: 100%;
-    text-align: left;
-    color: rgb(0, 0, 0);
+    font-size: 0.9em;
+  position: relative;
+  top: 94%;
+  width: 100%;
+  text-align: left;
+  color: rgb(0, 0, 0);
   }
   .card-badge{
     position: absolute;
-    right:90%;
-    top: 70%;
+    right:80%;
+    top: 54%;
   }
   .card-fav{
     position: absolute;
-    top: 75%;
-    left:80%;
+    top: 50%;
+    left:75%;
     font-size: 5.0em;
-    width: 60px;
-    height: 60px;
+    width: 10px;
+    height: 10px;
   }
   .card-coupon{
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 45px;
+    height: 45px;
     //
     // background: rgb(0, 0, 0);
     // color: gold!important;
@@ -106,22 +106,18 @@
       color: rgb(0, 0, 0);
       text-align: center;
     }
-  
-    // img:hover{
-    
-     
-    //     fill: red;
-      
-    // }
+    .couponimg{
+      font-size: 70px;
+     }
   }
   .card-prix{
-    // font-size: 1.2em;
-    position: relative;
-    top: 80%;
-    // left: 68%;
-    // width: 100%;
-    // text-align: left;
-    color: rgb(255, 0, 8);
+  // font-size: 1.2em;
+  position: relative;
+  top: 80%;
+  // left: 68%;
+  // width: 100%;
+  // text-align: left;
+  color: rgb(255, 0, 8);
   }
   
   
@@ -212,7 +208,9 @@
       }
     }
   }
-  
+  .shadowcard{
+    box-shadow: 6px 6px 6px black;
+  }
   .ribbon.cruzeiro {
     @include ribbonize($cruzeiro);
   }
@@ -223,4 +221,18 @@
   
   .ribbon.javascript {
     @include ribbonize($javascript, black);
+  }
+
+  .classcol:nth-child(odd){
+    margin-top: 25px;
+    padding: 0px;
+    height: 50%;
+    // background-color: red;
+  }
+  .classcol{
+    margin-top: 0px;
+    padding: 0px;
+    height: 50%;
+  
+    // background-color: red;
   }

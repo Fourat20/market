@@ -12,7 +12,11 @@ export class VideopopupPage implements OnInit {
 urlSafe:SafeResourceUrl;
 
   constructor( private modalController: ModalController,
-               private sanitizer: DomSanitizer) { }
+               private sanitizer: DomSanitizer,
+               ) { 
+                
+                    
+               }
 passurl: string;
 
   ngOnInit() {
@@ -20,5 +24,7 @@ passurl: string;
     console.log(`${this.passurl}`);
     
   }
+
+  
 
 }

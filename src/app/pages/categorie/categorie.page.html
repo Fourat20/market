@@ -21,44 +21,44 @@
           <img src="../../../assets/categorie/fashion.svg">
           <ion-label>Vetement</ion-label>
         </ion-segment-button>
-        <ion-segment-button (click)="go_Maison()">
+        <ion-segment-button (click)="go_Electronique()">
           <img src="../../../assets/categorie/cpu.svg">
           <ion-label>High-tech</ion-label>
         </ion-segment-button>
-        <ion-segment-button (click)="go_Electronique()">
+        <ion-segment-button (click)="go_Beauty()">
           <img src="../../../assets/categorie/cosmetics.svg">
-          <ion-label>Beauté</ion-label>
+          <ion-label>Beauty</ion-label>
         </ion-segment-button>
 
-        <ion-segment-button (click)="go_Electronique()">
+        <ion-segment-button (click)="go_Restauration()">
           <img src="../../../assets/categorie/food.svg">
           <ion-label>Restauration</ion-label>
         </ion-segment-button>
-        <ion-segment-button (click)="go_Electronique()">
+        <ion-segment-button (click)="go_Market()">
           <img src="../../../assets/categorie/market.svg">
           <ion-label>Marché</ion-label>
         </ion-segment-button>
       <!-- </ion-slide>
       <ion-slide> -->
-        <ion-segment-button (click)="go_Electronique()">
+        <ion-segment-button (click)="go_Automobile()">
           <img src="../../../assets/categorie/car.svg">
           <ion-label>Automobile</ion-label>
         </ion-segment-button>
  
-         <ion-segment-button (click)="go_Electronique()">
+         <ion-segment-button (click)="go_Deco()">
           <img src="../../../assets/categorie/shelves.svg">
           <ion-label>Déco</ion-label>
         </ion-segment-button>
 
-        <ion-segment-button (click)="go_Electronique()">
+        <ion-segment-button (click)="go_Loisir()">
           <img src="../../../assets/categorie/bike.svg">
             <ion-label>Loisir</ion-label>
           </ion-segment-button>
-          <ion-segment-button (click)="go_Electronique()">
+          <ion-segment-button (click)="go_Accessoires()">
             <img src="../../../assets/categorie/necklace.svg">
             <ion-label>Accessoires</ion-label>
           </ion-segment-button>
-          <ion-segment-button (click)="go_Electronique()">
+          <ion-segment-button (click)="go_Service()">
             <img src="../../../assets/categorie/customer.svg">
             <ion-label>Service </ion-label>
           </ion-segment-button>
@@ -82,69 +82,20 @@
 
     </div>
       <div *ngIf="value=='Electronique'">
-        <ion-row>
-        <ion-col size="4">
-          <div>
-            <img src="../../../assets/article/pc1.jpg">
-           <p style="text-align: center;"> Pc1</p> 
-          </div>
-         
-        </ion-col>
-        <ion-col size="4">
-          <div>
-            <img src="../../../assets/article/pc2.jpg">
-           <p style="text-align: center;"> Pc2</p> 
-          </div>
-        </ion-col>
-        <ion-col size="4">
-          <div>
-            <img src="../../../assets/article/pc3.jpg">
-           <p style="text-align: center;"> Pc3</p> 
-          </div>
-        </ion-col>
+        <ion-row *ngIf="managementService.category.name=='Electronique'">
+          <ion-row>
+            <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
+              <div (click)="OffreDetails(i)">
+                <img   src={{offre.image}}> 
+              </div>
+               <p style="text-align: center;"> {{offre.title}}</p>
+              
+            </ion-col>
+    
+          </ion-row>
       </ion-row>
-      <ion-row>
-        <ion-col size="4">
-          <div>
-            <img src="../../../assets/article/pc1.jpg">
-           <p style="text-align: center;"> Pc1</p> 
-          </div>
-         
-        </ion-col>
-        <ion-col size="4">
-          <div>
-            <img src="../../../assets/article/pc2.jpg">
-           <p style="text-align: center;"> Pc2</p> 
-          </div>
-        </ion-col>
-        <ion-col size="4">
-          <div>
-            <img src="../../../assets/article/pc3.jpg">
-           <p style="text-align: center;"> Pc3</p> 
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="4">
-          <div>
-            <img src="../../../assets/article/pc1.jpg">
-           <p style="text-align: center;"> Pc1</p> 
-          </div>
-         
-        </ion-col>
-        <ion-col size="4">
-          <div>
-            <img src="../../../assets/article/pc2.jpg">
-           <p style="text-align: center;"> Pc2</p> 
-          </div>
-        </ion-col>
-        <ion-col size="4">
-          <div>
-            <img src="../../../assets/article/pc3.jpg">
-           <p style="text-align: center;"> Pc3</p> 
-          </div>
-        </ion-col>
-      </ion-row>
+
+
     </div>
     <div *ngIf="value=='Vetement'">
       <ion-row>
@@ -190,6 +141,105 @@
       </ion-col>
     </ion-row>
   </div>
+
+  <div *ngIf="value=='Maison'">
+    <ion-row>
+    <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
+      <div (click)="OffreDetails(i)">
+        <img   src={{offre.image}}> 
+      </div>
+       <p style="text-align: center;"> {{offre.title}}</p>
+    </ion-col>
+  </ion-row>
+</div>
+
+<div *ngIf="value=='Beauty'">
+  <ion-row>
+  <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
+    <div (click)="OffreDetails(i)">
+      <img   src={{offre.image}}> 
+    </div>
+     <p style="text-align: center;"> {{offre.title}}</p>
+  </ion-col>
+</ion-row>
+</div>
+
+<div *ngIf="value=='Restauration'">
+  <ion-row>
+  <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
+    <div (click)="OffreDetails(i)">
+      <img   src={{offre.image}}> 
+    </div>
+     <p style="text-align: center;"> {{offre.title}}</p>
+  </ion-col>
+</ion-row>
+</div>
+
+<div *ngIf="value=='Market'">
+  <ion-row>
+  <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
+    <div (click)="OffreDetails(i)">
+      <img   src={{offre.image}}> 
+    </div>
+     <p style="text-align: center;"> {{offre.title}}</p>
+  </ion-col>
+</ion-row>
+</div>
+
+<div *ngIf="value=='Automobile'">
+  <ion-row>
+  <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
+    <div (click)="OffreDetails(i)">
+      <img   src={{offre.image}}> 
+    </div>
+     <p style="text-align: center;"> {{offre.title}}</p>
+  </ion-col>
+</ion-row>
+</div>
+
+<div *ngIf="value=='Deco'">
+  <ion-row>
+  <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
+    <div (click)="OffreDetails(i)">
+      <img   src={{offre.image}}> 
+    </div>
+     <p style="text-align: center;"> {{offre.title}}</p>
+  </ion-col>
+</ion-row>
+</div>
+
+<div *ngIf="value=='Loisir'">
+  <ion-row>
+  <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
+    <div (click)="OffreDetails(i)">
+      <img   src={{offre.image}}> 
+    </div>
+     <p style="text-align: center;"> {{offre.title}}</p>
+  </ion-col>
+</ion-row>
+</div>
+
+<div *ngIf="value=='Accessoires'">
+  <ion-row>
+  <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
+    <div (click)="OffreDetails(i)">
+      <img   src={{offre.image}}> 
+    </div>
+     <p style="text-align: center;"> {{offre.title}}</p>
+  </ion-col>
+</ion-row>
+</div>
+
+<div *ngIf="value=='Service'">
+  <ion-row>
+  <ion-col size="4" *ngFor="let offre of managementService.listOffre ; let i = index">
+    <div (click)="OffreDetails(i)">
+      <img   src={{offre.image}}> 
+    </div>
+     <p style="text-align: center;"> {{offre.title}}</p>
+  </ion-col>
+</ion-row>
+</div>
     </ion-col>
   </ion-row>
  

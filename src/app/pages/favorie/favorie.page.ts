@@ -20,9 +20,11 @@ export class FavoriePage implements OnInit {
   getFav(){
     this.storage.get("favorie").then((res) => {
       this.favorieArr=res
-       alert("The session TOKEN value is " +JSON.stringify(res) );
-
-
+       console.log("fav " +JSON.stringify(res) );
+       console.log("fav " +JSON.stringify(this.favorieArr[0].fav) );
+       console.log("fav " +JSON.stringify(this.favorieArr[1].fav) );
+       console.log("fav " +JSON.stringify(this.favorieArr[2].fav) );
+       console.log("fav " +JSON.stringify(this.favorieArr[3].fav) );
     });
   }
 }

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>edit-profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content   >
+  <div>
+      <ion-card-content class="centreee"  >
+          <div style="text-align: center;">
+            <img class="image" [src] ="auth.profileData.imageUrl">
+          </div>
+          </ion-card-content>
+  <ion-item >
+      <ion-label stacked>Prénom</ion-label>
+      <ion-input  type="text" value="{{auth.profileData.displayName}}"[(ngModel)]="auth.profileData.displayName" ></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Nom</ion-label>
+      <ion-input  type="text" value="{{auth.profileData.familyName}}" [(ngModel)]="auth.profileData.familyName"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Email</ion-label>
+      <ion-input  type="input" value="{{auth.profileData.email}}" [(ngModel)]="auth.profileData.email"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Date de naissance</ion-label>
+      <ion-datetime  pickerFormat="DD/MM/YYYY" displayFormat="DD/MM/YYYY" [(ngModel)]="auth.profileData.birth_date"></ion-datetime>
+    </ion-item>
+
+
+
+   
+      <br>
+     
+        <div>
+          <ion-button full class="btn-login"  color="danger" (click)="updateProfile()">Save</ion-button>
+        </div>
+    </div>
+</ion-content>

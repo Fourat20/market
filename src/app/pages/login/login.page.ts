@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service/auth.service';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { Storage } from "@ionic/storage";
+
 // import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 @Component({
   selector: 'app-login',
@@ -11,29 +13,50 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 export class LoginPage implements OnInit {
   email
   password
+  AccessToken
   constructor(private router: Router,
               private auth: AuthService,
               private googlePlus: GooglePlus,
+              private storage: Storage
               // private fb: Facebook
               ) { }
 
   ngOnInit() {
+    this.getAT()
+  }
+
+  getAT(){
+    this.storage.get("AccessToken").then((res) => {
+      this.AccessToken=res
+       console.log("AccessToken from storage " +JSON.stringify(res) );
+  
+       if(this.AccessToken)
+       {
+         console.log("AT: "+this.AccessToken)
+         this.router.navigate(['tabs/tabs/home'])
+       }else
+       console.log("else aT "+this.AccessToken);
+       
+      });
   }
   Register(){
     
     this.router.navigateByUrl('sign-up')
   }
-  Login(){
+ async Login(){
     this.auth.email=this.email
     this.auth.password=this.password
-this.auth.login()
+await this.auth.login()
+await this.delay(200)
 if(this.auth.AccessToken){ 
   this.router.navigateByUrl('tabs/tabs/home')
 }else{
   alert("err email or password")
 }
   }
-
+  delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
   LoginGoogle(){
 this.auth.LoginGoogle()
 

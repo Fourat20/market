@@ -6,7 +6,33 @@
 
 <ion-content>
   <ion-grid>
+    <ion-row >
+      <ion-col class="classcol" size="6" *ngFor="let card of favorieArr ; let i = index">
+       <div *ngIf="card.fav==true">
+        <ion-card  class="item-ribbon shadowcard"  >
+          <span class="ribbon javascript">
+            <span>{{card.percentage}} %</span>
+          </span>
+          <img style="width: 300px; height: 150px;" [src]="card.image"(click)=" OffreDetails(i)"/>
+          <div class="card-coupon">  <img class="couponimg" src='../../../assets/article/seal2.png'> <p style=" font-size: 0.7em;">20 <br>win</p></div>
+          <div class="card-fav" ><ion-icon (click)="fav(card)" *ngIf="favorie==0" name="heart-outline"></ion-icon><ion-icon (click)="notfav(card)" style="color: #f53d3d;" *ngIf="favorie==1" name="heart"></ion-icon></div>
+          <div class="card-badge"><ion-badge color="danger">66</ion-badge></div>
+      <div style="background-color: #fff1cb;">
+        <div class="card-title">{{card.title}}</div>
+        <div class="card-subtitle">{{card.description}}</div>
+        <div class="card-prix"><p style="text-align: left; font-size: 1.2em;">{{card.price_after}} TND</p></div>
+      </div> 
+      </ion-card>
+    </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+  <!-- <ion-grid>
     <ion-card  class="item-ribbon shadowcard" *ngFor="let card of favorieArr ; let i = index" >
+      <div *ngIf="favorieArr.fav==true">
       <span class="ribbon javascript">
         <span>{{card.percentage}} %</span>
       </span>
@@ -20,7 +46,10 @@
     <div class="card-prix">{{card.price_after}} TND</div>
   </div>
      
+
+     </div>
+
      
     </ion-card>
-  </ion-grid>
+  </ion-grid> -->
 </ion-content>

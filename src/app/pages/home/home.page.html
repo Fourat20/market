@@ -1,12 +1,14 @@
 <ion-header [translucent]="true">
 <ion-toolbar>
   <div>
-      <ion-searchbar style="display: block;
-      padding-right: 105px;" showCancelButton="focus"  (keyup)="onSearchChange($event)"></ion-searchbar>
-<span class="fav"><ion-icon (click)="gofav()" style="font-size:40px"  name="heart-outline"></ion-icon></span>
-<!-- <span class="filtre"><ion-icon  name="filter-circle-outline"></ion-icon></span> -->
-<span class="filtre"><img style="font-size:40px" src="../../assets/home/filter.svg"></span>
+      <ion-searchbar style="display: block; border-radius: 60px" #search debounce="500"  animated style="display: block;
+      padding-right: 105px;" showCancelButton="focus"  (click)="onSearchChange($event)"></ion-searchbar>
 </div>
+<span class="fav" *ngIf="favorieArrGet==[]"><ion-icon (click)="gofav()" style="font-size:40px"  name="heart-outline"></ion-icon></span>
+<span class="fav" *ngIf="favorieArrGet!=[]"><ion-icon (click)="gofav()" style="font-size:40px; color: #f53d3d;"  name="heart"></ion-icon></span>
+
+<!-- <span class="filtre"><ion-icon  name="filter-circle-outline"></ion-icon></span> -->
+<span  class="filtre"><img style="font-size:40px" (click)="filtremodal()" src="../../assets/home/filter.svg"></span>
 
 </ion-toolbar>
 </ion-header>
@@ -87,7 +89,6 @@
 <ion-grid>
   <!-- <span>Nos Collections</span> -->
   <div>
-     
   <!--  {{result2}} -->
     <ion-grid *ngIf="result">
       <ion-row>
@@ -133,7 +134,7 @@
  
 <ion-grid>
  <ion-row>
-   <ion-col col-6  *ngFor="let list of managementService.listOffre; let i = index">
+   <ion-col col-6  *ngFor="let list of provider_res; let i = index">
   <div *ngIf="list.priority==1">
     <div (click)=" OffreDetails(i)">
     <img style="height: 80px;width: 100px;"  [src] ="list.image" >
@@ -193,8 +194,9 @@
         </span>
         <img style="width: 300px; height: 150px;" [src]="card.image"(click)=" OffreDetails(i)"/>
         <div class="card-coupon">  <img class="couponimg" src='../../../assets/article/seal2.png'> <p style=" font-size: 0.7em;">20 <br>win</p></div>
-        <div class="card-fav" ><ion-icon (click)="fav(card)" *ngIf="favorie==0" name="heart-outline"></ion-icon><ion-icon (click)="notfav(card)" style="color: #f53d3d;" *ngIf="favorie==1" name="heart"></ion-icon></div>
-        <div class="card-badge"><ion-badge color="danger">66</ion-badge></div>
+        <div class="card-fav" *ngIf="card.fav==true" (click)="deleteFav(i)"  ><ion-icon style="color: #f53d3d;"  name="heart"></ion-icon></div>
+        <div class="card-fav" *ngIf="card.fav==false" (click)="addfav(i)"><ion-icon   name="heart-outline"></ion-icon></div>
+        <div class="card-badge"><ion-badge color="danger">{{card.views}}</ion-badge></div>
     <div style="background-color: #fff1cb;">
       <div class="card-title">{{card.title}}</div>
       <div class="card-subtitle">{{card.description}}</div>

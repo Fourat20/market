@@ -15,6 +15,7 @@ export class AuthService {
   email
   password
   profileData
+  UserData
 
   constructor(private router: Router,
               private httpClient: HttpClient,
@@ -60,9 +61,11 @@ headers= {
     .post(this.urlGlobal+"/api/user/login",postData,headers)
     .then(async (data) => {
       var u_data = JSON.parse(data.data);
-      // alert('AccessToken: '+ u_data.token)
+       console.log('AccessToken: '+ u_data.token)
+      this.UserData=u_data.user
       this.AccessToken= u_data.token
       this.storage.set("AccessToken", this.AccessToken);
+   
     })
     .catch((error) => {
       alert("err token: "+JSON.stringify (error))
@@ -77,6 +80,7 @@ LoginGoogle(){
     alert(JSON.stringify(res))
     this.profileData=res
  this.AccessToken=res.accessToken
+ this.storage.set("AccessToken", this.AccessToken);
  this.router.navigateByUrl('tabs/tabs/home')
   }
   )

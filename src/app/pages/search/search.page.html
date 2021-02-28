@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>search</ion-title>
+    <div>
+      <ion-searchbar #search debounce="500"  animated style="display: block;
+      padding-right: 105px;" showCancelButton="focus"  (ionChange)="onSearchChange($event)"></ion-searchbar>
+<span class="fav"><ion-icon (click)="gofav()" style="font-size:40px"  name="heart-outline"></ion-icon></span>
+<!-- <span class="filtre"><ion-icon  name="filter-circle-outline"></ion-icon></span> -->
+<span (click)="filtremodal()" class="filtre"><img style="font-size:40px" src="../../assets/home/filter.svg"></span>
+</div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<ion-list *ngFor="let item of searchedItem">
+  <ion-label style="padding-left: 5%;">{{item.title}}</ion-label>
+</ion-list>
 </ion-content>

@@ -34,7 +34,12 @@ const routes: Routes = [
   {
     path: 'pub',
     loadChildren: () => import('./pages/pub/pub.module').then( m => m.PubPageModule)
+  },  {
+    path: 'filtre',
+    loadChildren: () => import('./pages/filtre/filtre.module').then( m => m.FiltrePageModule)
   }
+
+
 
 
 ];

@@ -1,9 +1,11 @@
 import { Component, ViewChild, ViewChildren } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { IonSlides, Platform} from '@ionic/angular'
+import { IonSearchbar, IonSlides, ModalController, Platform} from '@ionic/angular'
 import { AuthService } from 'src/app/services/auth.service/auth.service';
 import { ManagementService } from 'src/app/services/management.service/management.service';
 import { Storage } from "@ionic/storage";
+import { HttpClient } from '@angular/common/http';
+import { FiltrePage } from '../filtre/filtre.page';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -20,6 +22,7 @@ result
 result2
 favorieArr=[]
 favorieArrGet=[]
+provider_res
 cards=[
   {
     'image':'../../assets/article/bracelet.jpg',
@@ -94,21 +97,24 @@ categories=[
               public platform: Platform,
               private auth: AuthService,
               private storage: Storage,
-              private managementService:ManagementService) {
+              private httpClient: HttpClient,
+              private managementService:ManagementService,
+              private modalController:ModalController,) {
                 this.platform.backButton.subscribeWithPriority(0, () => {
                   console.log(platform.backButton)
                 })
                 this.countDown()
 
-              
+              this.managementService.get_list_produit()
                  this.managementService.get_list_provider()
 
-                 if( !this.auth.AccessToken){
-                  this.router.navigateByUrl('login')
-                 }
+                //  if( !this.auth.AccessToken){
+                //   this.router.navigateByUrl('login')
+                //  }
                 //  this.getFav()
-                 this.postFav()
+                //  this.postFav()
                 
+                 this.getTest()
               }
               config={
                 spaceBetween:10,
@@ -128,6 +134,8 @@ categories=[
   ionSlideChange(slides){
 
   }
+
+
 
   OffreDetails(i){
     let id:NavigationExtras={
@@ -174,18 +182,18 @@ this.router.navigate(['/tabs/tabs/article'],id)
 {
   console.log("from first for"+this.favorieArrGet.length);
   
-  for(let j=0;this.managementService.listOffre.length;j++){
-    console.log("from second for");
-    if(this.managementService.listOffre[i]==this.favorieArrGet[j])
-    {
-      console.log("if");
-      this.managementService.listOffre[i].fav=1
-    }else
-    {
-      console.log("else");
-      this.managementService.listOffre[i].fav=0
-    }
-  }
+  // for(let j=0;this.managementService.listOffre.length;j++){
+  //   console.log("from second for");
+  //   if(this.managementService.listOffre[i]==this.favorieArrGet[j])
+  //   {
+  //     console.log("if");
+  //     this.managementService.listOffre[i].fav=1
+  //   }else
+  //   {
+  //     console.log("else");
+  //     this.managementService.listOffre[i].fav=0
+  //   }
+  // }
  
   alert("new listOffre   "+this.managementService.listOffre[i].fav)
   console.log("new listOffre:  "+this.managementService.listOffre[i].fav);
@@ -259,52 +267,106 @@ alert("this.favorieArr " +this.favorieArr)
 
   onSearchChange(event){
 
-    // console.log("this.managementService.listProvider: "+this.managementService.listProvider);
+    this.router.navigateByUrl('tabs/tabs/search')
+
+//     // console.log("this.managementService.listProvider: "+this.managementService.listProvider);
     
-    let  search_key =  event.target.value
-    this.result = ""
+//     let  search_key =  event.target.value
+//     this.result = ""
 
-  // console.log( this.provider_res) ;
-//  Search an element right Now
-  for(var i = 0; i < this.managementService.listProvider.length; i++)
-  {
+//   // console.log( this.provider_res) ;
+// //  Search an element right Now
+//   for(var i = 0; i < this.managementService.listProvider.length; i++)
+//   {
 
-    // console.log("Read an element ")
-    // console.log(this.provider_res[i])
+//     // console.log("Read an element ")
+//     // console.log(this.provider_res[i])
 
-    // @ts-ignore
-    if(this.managementService.listProvider[i].name === search_key){
-      console.log(this.managementService.listProvider[i])
-        this.result = JSON.stringify(this.managementService.listProvider[i])
-        console.log( this.result)
-        // this.router.navigateByUrl('/tabs/tabs/search')
-    }
-    // if(restaurants[i].restaurant.food == 'chicken')
-    // {
-    //   return restaurants[i].restaurant.name;
-    // }
+//     // @ts-ignore
+//     if(this.managementService.listProvider[i].name === search_key){
+//       console.log(this.managementService.listProvider[i])
+//         this.result = JSON.stringify(this.managementService.listProvider[i])
+//         console.log( this.result)
+//         // this.router.navigateByUrl('/tabs/tabs/search')
+//     }
+//     // if(restaurants[i].restaurant.food == 'chicken')
+//     // {
+//     //   return restaurants[i].restaurant.name;
+//     // }
 
+
+//   }
+
+
+//       // console.log("this.managementService.listProvider: "+this.managementService.listProvider);
+    
+//     //   let  search_key2 =  event.target.value
+//     //   this.result2 = ""
+  
+//     // for(var i = 0; i < this.managementService.listOffre.length; i++)
+//     // {
+  
+    
+//     //   if(this.managementService.listOffre[i].title === search_key2){
+//     //     console.log(this.managementService.listOffre[i])
+//     //       this.result2 = JSON.stringify(this.managementService.listOffre[i])
+//     //       console.log("offre    "+ this.result2)
+//     //   }
+
+  
+  
+//     // }
+  }
+
+deleteFav(i){
+  this.provider_res[i].fav = false
+  // this.provider_res[2].fav = true
+
+  this.storage.set("favorie", this.provider_res);
+}
+
+
+  
+  addfav(i) {
+  
+    this.provider_res[i].fav = true
+    this.storage.set("favorie", this.provider_res);
 
   }
 
+  openfav() {
+    alert(JSON.stringify(this.provider_res[1].fav))
+  }
 
-      // console.log("this.managementService.listProvider: "+this.managementService.listProvider);
-    
-    //   let  search_key2 =  event.target.value
-    //   this.result2 = ""
-  
-    // for(var i = 0; i < this.managementService.listOffre.length; i++)
-    // {
-  
-    
-    //   if(this.managementService.listOffre[i].title === search_key2){
-    //     console.log(this.managementService.listOffre[i])
-    //       this.result2 = JSON.stringify(this.managementService.listOffre[i])
-    //       console.log("offre    "+ this.result2)
-    //   }
+  getTest(){
+    this.httpClient.get("https://shop.lunura.com/api/offer").subscribe((res: any) =>{
+      // @ts-ignore
+      this.provider_res = res
+      // @ts-ignore
+      console.log(this.provider_res.length) ;
 
-  
-  
-    // }
+
+      // @ts-ignore
+      for(let i=0; i< this.provider_res.length ;i++)
+      {
+        // @ts-ignore
+        this.provider_res[i].fav = false;
+        // @ts-ignore
+        console.log(JSON.stringify(this.provider_res[i]) )
+      }
+    })
+  }
+
+  async filtremodal(value){
+    console.log("filtre");
+    
+    const modal=this.modalController.create({
+      component: FiltrePage,
+      cssClass:'my-modal-css',
+      componentProps:{
+        passurl:value
+      }
+    });
+    return (await modal).present();
   }
 }

@@ -9,7 +9,7 @@
     <div class="card-profile_user-infos">
       <span class="infos_name">{{auth.profileData.displayName}}{{auth.profileData.familyName}}</span>
       <span class="infos_nick">{{auth.profileData.email}}</span>
-    <div class="iconedit"> <ion-icon  name="create-outline"></ion-icon> </div>
+    <!-- <div (click)="goEditProfile()" class="iconedit"> <ion-icon  name="create-outline"></ion-icon> </div> -->
     </div>
 
     <ion-segment>
@@ -20,7 +20,7 @@
       </ion-segment-button>
       <ion-segment-button (click)="goForsa()">
         <!-- <img src="../../../assets/categorie/fashion.svg"> -->
-        <ion-label>	Forsa </ion-label>
+        <ion-label>	Win </ion-label>
       </ion-segment-button>
   </ion-segment>
     <!-- <div class="card-profile_user-stats">
@@ -43,7 +43,7 @@
       <ion-card *ngFor="let post of posts">
         <ion-item>
           <ion-avatar item-start>
-            <img [src]="user.profileImage">
+            <img [src]="auth.profileData.imageUrl">
           </ion-avatar>
           <!-- <h2 class="sticky">Forsa</h2> -->
           <p>{{post.code}}</p>
@@ -75,12 +75,12 @@
     </div>
 
     <div  *ngIf="status=='notification'">
-      <ion-card *ngFor="let post of posts">
+      <ion-card *ngFor="let post of managementService.notification">
         <ion-item>
           <ion-avatar item-start>
-            <img [src]="user.profileImage">
+            <img [src]="auth.profileData.imageUrl">
           </ion-avatar>
-          <h2 class="sticky">{{user.name}}</h2>
+          <h2 class="sticky">{{auth.profileData.displayName}} {{auth.profileData.familyName}}</h2>
           <p>{{post.date}}</p>
         </ion-item>
         <!-- <img [src]="post.postImageUrl" (click)="imageTapped(post)"> -->
@@ -109,4 +109,18 @@
       </ion-card>
     </div>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <ion-fab-button  class="pop-in" > <ion-icon  name="create-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="goEditProfile()" color="primary">
+        <ion-icon  name="person-outline"></ion-icon>
+      </ion-fab-button >
+      <ion-fab-button (click)="goInterest()" color="danger">
+        <ion-icon name="magnet"></ion-icon>
+      </ion-fab-button >
+    </ion-fab-list>
+  </ion-fab>
+
 </ion-content>
